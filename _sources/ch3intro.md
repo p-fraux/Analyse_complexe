@@ -1,4 +1,9 @@
 # <i class="fas fa-book fa-fw"></i> Transformée de Laplace
+$\newcommand{\R}{\mathbb{R}}$
+$\newcommand{\Q}{\mathbb{Q}}$
+$\newcommand{\N}{\mathbb{N}}$
+$\newcommand{\C}{\mathbb{C}}$
+$\newcommand{\Z}{\mathbb{Z}}$
 
 La transformée de Laplace est un des outils majeur de l'ingénieur pour la résolution d'équations différentielles et d'équations aux dérivées partielles linéaires. En particulier, tout traitement de système asservi s'effectue dans le "domaine de Laplace", c'est-à-dire après transformation. Cette transformation est particulièrement intéressante, puisqu'elle transforme des fonctions ayant une croissance à l'infini "pas trop importante" en des fonctions holomorphes sur un "grand" ouvert de $\C$. Ayant comme intérêt d'utiliser cette théorie pour des phénomènes respectant la causalité, nous nous contenterons d'évoquer ici l'existence d'une transformée de Laplace bilatérale, mais nous ne la traiterons pas par la suite.
 

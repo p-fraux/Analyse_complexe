@@ -54,7 +54,7 @@ L'objectif est d'étudier la transformée de Laplace, ses prorpiétées et les m
 :shadow: md 
 :class-header: bg-light
 
-<i class="fas fa-book fa-fw"></i> **Tests**
+<i class="fas fa-book fa-fw"></i> **Transformée en Z**
 ^^^
 Ce chapitre étudie la transformée en Z, ses prorpiétées et ses méthodes d'étude.
 ```
