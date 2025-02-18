@@ -1,0 +1,723 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2.1. Intégrale curviligne &#8212; Analyse complexe pour ingénieur - Introduction à la transformé de Laplace et à la transformé en Z</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="/Users/parent/opt/anaconda3/lib/python3.9/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/mystyle.css?v=0f3ba4bc" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/.ipynb_checkpoints/mystyle-checkpoint.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="/Users/parent/opt/anaconda3/lib/python3.9/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/js/all.min.js?v=ec35c6c9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "svg": {"fontCache": "global"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch2sec1';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2.2. Théorème de Cauchy et conséquences" href="ch2sec2.html" />
+    <link rel="prev" title="2. Intégration dans le corps des complexes" href="ch2intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/N7solo.png" class="logo__image only-light" alt="Analyse complexe pour ingénieur - Introduction à la transformé de Laplace et à la transformé en Z - Home"/>
+    <img src="_static/N7solo.png" class="logo__image only-dark pst-js-only" alt="Analyse complexe pour ingénieur - Introduction à la transformé de Laplace et à la transformé en Z - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Bienvenue au cours d’analyse complexe pour ingénieur
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch1intro.html">1. <i class="fas fa-book fa-fw"></i> Corps des complexes, fonctions usuelles et holomorphie</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch1sec1.html">1.1. Analyse dans le plan complexe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1sec2.html">1.2. Fonctions complexes usuelles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1sec3.html">1.3. Fonctions holomorphes</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="ch2intro.html">2. <i class="fas fa-book fa-fw"></i> Intégration dans le corps des complexes</a><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.1. Intégrale curviligne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2sec2.html">2.2. Théorème de Cauchy et conséquences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2sec3.html">2.3. Singularités et Théorème des résidus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2sec4.html">2.4. Les fonctions harmoniques (H.P.)</a></li>
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch3intro.html">3. <i class="fas fa-book fa-fw"></i> Transformée de Laplace</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch3sec1.html">3.1. Définition, domaine de validité et propriétée fondamentale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3sec2.html">3.2. Manipuler la transformée de Laplace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3sec3.html">3.3. Formule d’inversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3sec4.html">3.4. Exemple d’application</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch4intro.html">4. <i class="fas fa-book fa-fw"></i> Transformée en Z</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch4sec1.html">4.1. Définition et propriétés</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4sec2.html">4.2. Exemples d’applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4sec3.html">4.3. Lien avec la transformée de Laplace</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch7intro.html">5. <i class="fas fa-book fa-fw"></i>  Annexes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch7sec1.html">5.1. Dérivation sous le signe intégral de fonctions holomorphes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7sec2.html">5.2. Surjectivité de l’exponentielle complexe</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="biblio.html">6. <i class="fa-solid fa-book-open"></i> Bibliographie</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://p-fraux.github.io/Analyse_complexe/intro.html" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://p-fraux.github.io/Analyse_complexe/intro.html/issues/new?title=Issue%20on%20page%20%2Fch2sec1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ch2sec1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Intégrale curviligne</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-et-generalites">2.1.1. Définition et généralités</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lemmes-de-jordan">2.1.2. Lemmes de Jordan</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="integrale-curviligne">
+<h1><span class="section-number">2.1. </span>Intégrale curviligne<a class="headerlink" href="#integrale-curviligne" title="Link to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\(\newcommand{\R}{\mathbb{R}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\Q}{\mathbb{Q}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\N}{\mathbb{N}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\C}{\mathbb{C}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\Z}{\mathbb{Z}}\)</span></p>
+<section id="definition-et-generalites">
+<h2><span class="section-number">2.1.1. </span>Définition et généralités<a class="headerlink" href="#definition-et-generalites" title="Link to this heading">#</a></h2>
+<div class="proof definition admonition" id="definition_chemin">
+<p class="admonition-title"><span class="caption-number">Definition 2.1 </span></p>
+<section class="definition-content" id="proof-content">
+<p>On appelle <em>chemin</em> de <span class="math notranslate nohighlight">\(\C\)</span> l’image d’une application continue <span class="math notranslate nohighlight">\(\gamma : [a, b] \to \C\)</span>, <span class="math notranslate nohighlight">\([a, b]\)</span>  étant un intervalle de <span class="math notranslate nohighlight">\(\R\)</span>, muni d’un sens de parcours.</p>
+<p>On appelle <em>lacet</em> un chemin tel que <span class="math notranslate nohighlight">\(\gamma(a)=\gamma(b)\)</span>.</p>
+<p>On dit qu’une application <span class="math notranslate nohighlight">\(\gamma : [a,b]\to \C\)</span> est <span class="math notranslate nohighlight">\(C^1\)</span> par morceaux s’il existe <span class="math notranslate nohighlight">\(a=t_1&lt;t_2...&lt;t_n=b\)</span> tel que <span class="math notranslate nohighlight">\(\gamma\)</span> soit de classe <span class="math notranslate nohighlight">\(C^1\)</span> sur les intervals de la forme <span class="math notranslate nohighlight">\([t_i,t_{i+1}]\)</span>.</p>
+<p>Si pour un chemin, on peut trouver <span class="math notranslate nohighlight">\(\gamma\)</span> qui soit <span class="math notranslate nohighlight">\(C^1\)</span> par morceaux, on dira que <em>le chemin est <span class="math notranslate nohighlight">\(C^1\)</span> par morceaux</em>.</p>
+<figure class="align-default" id="id1">
+<img alt="_images/chemin.png" src="_images/chemin.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">Un chemin <span class="math notranslate nohighlight">\(C^1\)</span> par morceaux</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
+<img alt="_images/lacet.png" src="_images/lacet.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">Un lacet <span class="math notranslate nohighlight">\(C^1\)</span> par morceaux</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="proof example dropdown admonition" id="example_parametrisation">
+<p class="admonition-title"><span class="caption-number">Example 2.1 </span> (Exemple de chemin et leur paramétrisation :)</p>
+<section class="example-content" id="proof-content">
+<ul class="simple">
+<li><p>Segment de droite parallèle à l’axe des abscisses,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[x\in[x_1,x_2]\mapsto z=x+iy_0.\]</div>
+<ul class="simple">
+<li><p>Segment de droite parallèle à l’axe des ordonnées,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[y\in[y_1,y_2]\mapsto z=x_0+iy.\]</div>
+<ul class="simple">
+<li><p>Segment de droite passant par l’origine,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\rho \in [\rho_1,\rho_2]\mapsto z=\rho e^{i\theta}.\]</div>
+<ul class="simple">
+<li><p>Arc de cercle de rayon <span class="math notranslate nohighlight">\(R_0\)</span> et de centre <span class="math notranslate nohighlight">\(a\)</span>,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\theta\in [\theta_1,\theta_2]\mapsto a+R_0e^{i\theta}.\]</div>
+</section>
+</div></section>
+</div><div class="proof definition admonition" id="definition_integrale_curviligne">
+<p class="admonition-title"><span class="caption-number">Definition 2.2 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Soit <span class="math notranslate nohighlight">\(\gamma([a,b])\)</span> un chemin <span class="math notranslate nohighlight">\(C^1\)</span> par morceaux paramétré par <span class="math notranslate nohighlight">\(\gamma\)</span>, et <span class="math notranslate nohighlight">\(a=t_1&lt;...&lt;t_n=b\)</span> la décomposition associée. Soit <span class="math notranslate nohighlight">\(f\)</span> une fonction de la variable complexe continue, on appelle <em>intégrale curviligne</em> de <span class="math notranslate nohighlight">\(f\)</span> le long de <span class="math notranslate nohighlight">\(\gamma\)</span> la valeur</p>
+<div class="math notranslate nohighlight">
+\[\int_\gamma f(z)dz := \sum_{k=0}^{n-1}\int_{t_k}^{t_{k+1}} f(\gamma(t))\gamma'(t)dt\]</div>
+<p>également noté</p>
+<div class="math notranslate nohighlight">
+\[\int_\gamma f(z)dz =\int_{\gamma([a,b])} f(z)dz  \]</div>
+<div class="proof proposition dropdown admonition" id="proposition_Stieltjes">
+<p class="admonition-title"><span class="caption-number">Proposition 2.1 </span> (Reformulation (Intégrale de Stieltjes))</p>
+<section class="proposition-content" id="proof-content">
+<p>Soit <span class="math notranslate nohighlight">\(\gamma([a,b])\)</span> un chemin <span class="math notranslate nohighlight">\(C^1\)</span> par morceaux paramétré par <span class="math notranslate nohighlight">\(\gamma\)</span> et <span class="math notranslate nohighlight">\(f\)</span> une fonction continue. Alors l’intégrale curviligne de f sur le chemin défini par gamma peut s’écrire comme limite</p>
+<div class="math notranslate nohighlight">
+\[\int_\gamma f(z)dz= \lim\limits_{\sup|t_k-t_{k+1}|\underset{n}{\to}0, t_k\leq e_k\leq t_{k+1}}\sum_{k=0}^n f(\gamma(e_k))\left(\gamma(t_{k+1})-\gamma(t_k)\right).\]</div>
+<p>On a donc une reformulation. On se donne une subdivision du chemin <span class="math notranslate nohighlight">\(\gamma([a,b])=\cup_{k=1}^n \hat{z_{k-1}z_k}\)</span> et un point dans chaque morceau <span class="math notranslate nohighlight">\(\xi_k\in\hat{z_{k-1}z_k}\)</span>, comme dans le graphique qui suit.</p>
+<a class="reference internal image-reference" href="_images/Stieljes.png"><img alt="fig_Stieljes" class="align-center" src="_images/Stieljes.png" style="width: 400px;" /></a>
+<p>Avec les notations</p>
+<div class="math notranslate nohighlight">
+\[z_k =x_k+iy_k,\]</div>
+<div class="math notranslate nohighlight">
+\[z_k −z_{k−1} = \Delta x_k +i\Delta y_k,\]</div>
+<div class="math notranslate nohighlight">
+\[\xi_k =a_k+ib_k,\]</div>
+<div class="math notranslate nohighlight">
+\[f(\xi_k) = P(a_k,b_k)+iQ(a_k,b_k),\]</div>
+<p>on peut réecrire</p>
+<div class="math notranslate nohighlight">
+\[\int_\gamma f(z)dz=\lim\limits_{n\to \infty}\sum P(a_k,b_k)\Delta x_k-Q(a_k,b_k)\Delta y_k\]</div>
+<div class="math notranslate nohighlight">
+\[+i\lim\limits_{n\to \infty}\sum P(a_k,b_k)\Delta y_k+Q(a_k,b_k)\Delta x_k=\int_\gamma Pdx-Qdy + i\int_\gamma Qdx+Pdy\]</div>
+</section>
+</div><div class="proof proposition dropdown admonition" id="proposition_integrale_curviligne">
+<p class="admonition-title"><span class="caption-number">Proposition 2.2 </span> (propriétés de l’intégrale curviligne)</p>
+<section class="proposition-content" id="proof-content">
+<ul class="simple">
+<li><p><em>(Linéarité)</em> Soient <span class="math notranslate nohighlight">\(\gamma\)</span> un chemmin, <span class="math notranslate nohighlight">\(f,g\)</span> deux fonctions continues et <span class="math notranslate nohighlight">\(\lambda,\mu \in \C\)</span> deux scalaires. Alors</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\int_\gamma(\lambda f(z)+\mu g(z))dz = \lambda\int_\gamma f(z)dz +\mu \int_\gamma  g(z)dz.\]</div>
+<ul class="simple">
+<li><p><em>(Intégrale d’une constante)</em> Si <span class="math notranslate nohighlight">\(\gamma\)</span> est une paramètrisation d’un chemin et <span class="math notranslate nohighlight">\(K\)</span> est une constante, alors</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\int_\gamma Kdz=K\left(\gamma(b)-\gamma(a)\right)\]</div>
+<ul class="simple">
+<li><p><em>(Sens de parcours)</em> Si <span class="math notranslate nohighlight">\(\gamma_+\)</span> est un chemin parcouru dans un sens et <span class="math notranslate nohighlight">\(\gamma_-\)</span> le même chemin parcouru dans l’autre sens, alors pour <span class="math notranslate nohighlight">\(f\)</span> une fonction continue,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\int_{\gamma_+}f(z)dz=-\int_{\gamma_-}f(z)dz\]</div>
+<ul class="simple">
+<li><p><em>(Juxtaposition de deux chemins)</em> Soient <span class="math notranslate nohighlight">\(\gamma_1 : [a,b]\to \C\)</span> et <span class="math notranslate nohighlight">\(\gamma_2 : [b,c] \to \C\)</span> deux chemins tels que <span class="math notranslate nohighlight">\(\gamma_1(b)=\gamma_2(b)\)</span>, et on note <span class="math notranslate nohighlight">\(\gamma_1\cup\gamma_2\)</span> le chemin obtenue en juxtaposant ces deux chemins. On a alors que</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\int_{\gamma_1\cup \gamma_2}f(z)dz=\int_{\gamma_1}f(z)dz+\int_{\gamma_2}f(z)dz\]</div>
+<div class="proof admonition" id="proof">
+<p>Proof.  Il s’agit à chaque fois de revenir à la définition.</p>
+<p>La première propriété repose sur la linéarité du produit, la deuxième sur le théorème fondamental de l’analyse (aussi connue sous l’intégrale d’une dérivée), la troisième sur le fait qu’inverser un sens de parcours inverse la dérivé de la paramètrisation et enfin la quatrième sur la relation de Chasles.</p>
+</div>
+</section>
+</div></section>
+</div><div class="proof example admonition" id="example_calcul_integrale_curv">
+<p class="admonition-title"><span class="caption-number">Example 2.2 </span> (Exemple de calcul :)</p>
+<section class="example-content" id="proof-content">
+<p>Notons <span class="math notranslate nohighlight">\(\mathbb{U}:=\{z\in \C, |z|=1\}\)</span> et calculons <span class="math notranslate nohighlight">\(\int_{\mathbb{U}}\frac{1}{z}dz\)</span>.</p>
+<p>Remarquons d’abord que <span class="math notranslate nohighlight">\(\theta\in [0,2\pi]\mapsto e^{i\theta}\)</span> est une paramétrisation <span class="math notranslate nohighlight">\(C^1\)</span> de <span class="math notranslate nohighlight">\(\mathbb{U}\)</span>. Donc</p>
+<div class="math notranslate nohighlight">
+\[    \int_{\mathbb{U}}\frac{1}{z}dz = \int_0^{2\pi} \frac{1}{e^{i\theta}}(ie^{i\theta}) d\theta =\int_0^{2\pi} id\theta= 2i\pi.\]</div>
+</section>
+</div></section>
+<section id="lemmes-de-jordan">
+<h2><span class="section-number">2.1.2. </span>Lemmes de Jordan<a class="headerlink" href="#lemmes-de-jordan" title="Link to this heading">#</a></h2>
+<div class="proof lemma admonition" id="lemma-6">
+<p class="admonition-title"><span class="caption-number">Lemma 2.1 </span> (<span class="math notranslate nohighlight">\(1^{er}\)</span> lemme de Jordan)</p>
+<section class="lemma-content" id="proof-content">
+<p>Soient <span class="math notranslate nohighlight">\(a\in \C\)</span> un point, <span class="math notranslate nohighlight">\(r&gt;0\)</span> un rayon et <span class="math notranslate nohighlight">\(f\)</span> une fonction continue.</p>
+<p>Alors si l’on considère comme chemin <span class="math notranslate nohighlight">\(C_r(a)\)</span> un arc du cercle centré en <span class="math notranslate nohighlight">\(a\)</span> et de rayon <span class="math notranslate nohighlight">\(r\)</span>, et si \mbox{<span class="math notranslate nohighlight">\(\lim\limits_{r\to 0 (resp +\infty)}\sup\limits_{C_r(a)}|(z-a)f(z)|=0\)</span>}, alors</p>
+<div class="math notranslate nohighlight">
+\[\lim\limits_{r\to 0 (resp +\infty)}\int_{C_r(a)}f(z)dz=0\]</div>
+<div class="proof admonition" id="proof">
+<p>Proof. Paramétrisons l’arc de cercle par <span class="math notranslate nohighlight">\(\gamma : \theta\in [\alpha,\beta] \mapsto a+re^{i\theta}\)</span>. Alors</p>
+<div class="math notranslate nohighlight">
+\[\left|\int_{C_r(a)}f(z)dz\right|=\left|\int_{\alpha}^\beta f(a+re^{i\theta})rie^{i\theta}d\theta\right|,\]</div>
+<div class="math notranslate nohighlight">
+\[\leq \int_{\alpha}^\beta |rf(a+re^{i\theta})|d\theta\leq (\beta-\alpha)\sup\limits_{C_r(a)}|(z-a)f(z)|.\]</div>
+<p>Ce qui montre par encadrement la limite énoncé.</p>
+</div>
+</section>
+</div><div class="proof lemma admonition" id="lemma-7">
+<p class="admonition-title"><span class="caption-number">Lemma 2.2 </span> (<span class="math notranslate nohighlight">\(2^{nd}\)</span> lemme de Jordan)</p>
+<section class="lemma-content" id="proof-content">
+<a class="reference internal image-reference" href="_images/Jordan_hb.png"><img alt="fig_Jordan_hb" class="align-center" src="_images/Jordan_hb.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="_images/Jordan_gd.png"><img alt="fig_Jordan_gd" class="align-center" src="_images/Jordan_gd.png" style="width: 300px;" /></a>
+<p>Soient <span class="math notranslate nohighlight">\(a\in \C\)</span> un point, <span class="math notranslate nohighlight">\(r&gt;0\)</span> un rayon et <span class="math notranslate nohighlight">\(f\)</span> une fonction continue.</p>
+<p>Supposons <span class="math notranslate nohighlight">\(\lim\limits_{r\to +\infty}\sup\limits_{C_r(a)}|f(z)|=0\)</span>, alors</p>
+<div class="math notranslate nohighlight">
+\[\lim\limits_{r\to +\infty}\int_{C_r(a)}e^{imz}f(z)dz=0\qquad \text{ pour }m&gt;0 \text{ et } C_r\subset C_r^+,\]</div>
+<div class="math notranslate nohighlight">
+\[\lim\limits_{r\to +\infty}\int_{C_r(a)}e^{imz}f(z)dz=0\qquad \text{ pour }m&lt;0 \text{ et } C_r\subset C_r^-,\]</div>
+<div class="math notranslate nohighlight">
+\[\lim\limits_{r\to +\infty}\int_{C_r(a)}e^{mz}f(z)dz=0\qquad \text{ pour }m&lt;0 \text{ et } C_r\subset C_r^d,\]</div>
+<div class="math notranslate nohighlight">
+\[\lim\limits_{r\to +\infty}\int_{C_r(a)}e^{mz}f(z)dz=0\qquad \text{ pour }m&gt;0 \text{ et } C_r\subset C_r^g,\]</div>
+<div class="proof admonition" id="proof">
+<p>Proof. Quitte à effectuer une translation de l’espace, on peut supposer sans perte de généralité que <span class="math notranslate nohighlight">\(a=0\)</span>.</p>
+<p>Calculons, pour <span class="math notranslate nohighlight">\(0\leq \alpha&lt;\beta\leq \pi\)</span> (cas <span class="math notranslate nohighlight">\(C_r\subset C_r^+\)</span>) et <span class="math notranslate nohighlight">\(m&gt;0\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[\left|\int_{C_r(a)}e^{imz}f(z)dz\right|=\left|\int_\alpha^\beta e^{imre^{i\theta}}f(re^{i\theta})ire^{i\theta}d\theta\right|,\]</div>
+<div class="math notranslate nohighlight">
+\[\leq \sup\limits_{C_r}|f(z)| \int_\alpha^\beta re^{-mr\sin(\theta)}d\theta\]</div>
+<p>Car <span class="math notranslate nohighlight">\(|e^{z}|=e^{Re(z)}),\)</span></p>
+<div class="math notranslate nohighlight">
+\[\left|\int_{C_r(a)}e^{imz}f(z)dz\right|\leq \sup\limits_{C_r}|f(z)| \int_0^\pi re^{-mr\sin(\theta)}d\theta,\]</div>
+<div class="math notranslate nohighlight">
+\[\leq 2\sup\limits_{C_r}|f(z)| \int_0^{\frac{\pi}{2}} re^{-mr\sin(\theta)}d\theta,\]</div>
+<div class="math notranslate nohighlight">
+\[\leq 2\sup\limits_{C_r}|f(z)| \int_0^{\frac{\pi}{2}} re^{-mr\frac{2\theta}{\pi}}d\theta \]</div>
+<p>Car <span class="math notranslate nohighlight">\(\sin(\theta)\geq\frac{2\theta}{\pi}\)</span> sur <span class="math notranslate nohighlight">\([0,\frac{\pi}{2}]\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\left|\int_{C_r(a)}e^{imz}f(z)dz\right|\leq \sup\limits_{C_r}|f(z)| \left[\frac{-\pi}{2m}e^{-mr\frac{2\theta}{\pi}} \right]_0^{\frac{\pi}{2}},\]</div>
+<div class="math notranslate nohighlight">
+\[\leq \sup\limits_{C_r}|f(z)|\frac{\pi}{m}\left(1-e^{-mr}\right) \to 0.\]</div>
+<p>Pour les trois autres cas, on peut soit refaire tout les calculs, soit se ramener à chaque fois par un changement de variable à la troisième ligne de ce calcul (les détails sont laissé au lecteur).</p>
+</div>
+</section>
+</div></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ch2intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span><i class="fas fa-book fa-fw"></i> Intégration dans le corps des complexes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ch2sec2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.2. </span>Théorème de Cauchy et conséquences</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-et-generalites">2.1.1. Définition et généralités</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lemmes-de-jordan">2.1.2. Lemmes de Jordan</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By P. Fraux
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Lien vers la page principale du cours <a href="https://p-fraux.github.io/Cours-Mathematiques/intro.html"> Mathematiques de première année</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

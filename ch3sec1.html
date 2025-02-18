@@ -1,0 +1,672 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3.1. Définition, domaine de validité et propriétée fondamentale &#8212; Analyse complexe pour ingénieur - Introduction à la transformé de Laplace et à la transformé en Z</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="/Users/parent/opt/anaconda3/lib/python3.9/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/mystyle.css?v=0f3ba4bc" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/.ipynb_checkpoints/mystyle-checkpoint.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="/Users/parent/opt/anaconda3/lib/python3.9/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/js/all.min.js?v=ec35c6c9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "svg": {"fontCache": "global"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch3sec1';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3.2. Manipuler la transformée de Laplace" href="ch3sec2.html" />
+    <link rel="prev" title="3. Transformée de Laplace" href="ch3intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/N7solo.png" class="logo__image only-light" alt="Analyse complexe pour ingénieur - Introduction à la transformé de Laplace et à la transformé en Z - Home"/>
+    <img src="_static/N7solo.png" class="logo__image only-dark pst-js-only" alt="Analyse complexe pour ingénieur - Introduction à la transformé de Laplace et à la transformé en Z - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Bienvenue au cours d’analyse complexe pour ingénieur
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch1intro.html">1. <i class="fas fa-book fa-fw"></i> Corps des complexes, fonctions usuelles et holomorphie</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch1sec1.html">1.1. Analyse dans le plan complexe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1sec2.html">1.2. Fonctions complexes usuelles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1sec3.html">1.3. Fonctions holomorphes</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch2intro.html">2. <i class="fas fa-book fa-fw"></i> Intégration dans le corps des complexes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch2sec1.html">2.1. Intégrale curviligne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2sec2.html">2.2. Théorème de Cauchy et conséquences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2sec3.html">2.3. Singularités et Théorème des résidus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2sec4.html">2.4. Les fonctions harmoniques (H.P.)</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="ch3intro.html">3. <i class="fas fa-book fa-fw"></i> Transformée de Laplace</a><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.1. Définition, domaine de validité et propriétée fondamentale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3sec2.html">3.2. Manipuler la transformée de Laplace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3sec3.html">3.3. Formule d’inversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3sec4.html">3.4. Exemple d’application</a></li>
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch4intro.html">4. <i class="fas fa-book fa-fw"></i> Transformée en Z</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch4sec1.html">4.1. Définition et propriétés</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4sec2.html">4.2. Exemples d’applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4sec3.html">4.3. Lien avec la transformée de Laplace</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch7intro.html">5. <i class="fas fa-book fa-fw"></i>  Annexes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch7sec1.html">5.1. Dérivation sous le signe intégral de fonctions holomorphes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7sec2.html">5.2. Surjectivité de l’exponentielle complexe</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="biblio.html">6. <i class="fa-solid fa-book-open"></i> Bibliographie</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://p-fraux.github.io/Analyse_complexe/intro.html" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://p-fraux.github.io/Analyse_complexe/intro.html/issues/new?title=Issue%20on%20page%20%2Fch3sec1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ch3sec1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Définition, domaine de validité et propriétée fondamentale</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fonctions-transformables">3.1.1. Fonctions transformables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theoremes-fondamentaux">3.1.2. Théorèmes fondamentaux</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="definition-domaine-de-validite-et-proprietee-fondamentale">
+<h1><span class="section-number">3.1. </span>Définition, domaine de validité et propriétée fondamentale<a class="headerlink" href="#definition-domaine-de-validite-et-proprietee-fondamentale" title="Link to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\(\newcommand{\R}{\mathbb{R}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\Q}{\mathbb{Q}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\N}{\mathbb{N}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\C}{\mathbb{C}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\Z}{\mathbb{Z}}\)</span></p>
+<section id="fonctions-transformables">
+<h2><span class="section-number">3.1.1. </span>Fonctions transformables<a class="headerlink" href="#fonctions-transformables" title="Link to this heading">#</a></h2>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 3.1 </span></p>
+<section class="definition-content" id="proof-content">
+<p>On dit qu’une fonction <span class="math notranslate nohighlight">\(f\)</span> est <em>transformable</em> si elle est localement intégrable et s’il existe <span class="math notranslate nohighlight">\(x_0\in \R\)</span> tel que l’intégrale généralisée de <span class="math notranslate nohighlight">\(g:t\mapsto e^{-x_0t}f(t)\)</span> converge.</p>
+<p>Pour <span class="math notranslate nohighlight">\(f\)</span> une fonction transformable et pour <span class="math notranslate nohighlight">\(p\in \C\)</span> tel que cela est un sens (<em>i.e.</em> il y ait convergence), on appelle transformé de Laplace de <span class="math notranslate nohighlight">\(f\)</span> en p la valeur</p>
+<div class="math notranslate nohighlight">
+\[F(p)=TL(f)[p] := \int_0^{+\infty} e^{-pt}f(t)dt.\]</div>
+<p>Lorsque cela a du sens, on dira que <span class="math notranslate nohighlight">\(TL(f)[p]\)</span> existe.</p>
+<div class="proof proposition dropdown admonition" id="convergence">
+<p class="admonition-title"><span class="caption-number">Proposition 3.1 </span> (Domaine de convergence)</p>
+<section class="proposition-content" id="proof-content">
+<p>Soient <span class="math notranslate nohighlight">\(f\)</span> une fonction transformable et <span class="math notranslate nohighlight">\(p_0\in \C\)</span>.</p>
+<p>Si <span class="math notranslate nohighlight">\(TL(f)[p_0]\)</span> existe, alors pour tout <span class="math notranslate nohighlight">\(p\in \C\)</span> tel que <span class="math notranslate nohighlight">\(Re(p)&gt;Re(p_0)\)</span>, <span class="math notranslate nohighlight">\(TL(f)[p]\)</span> existe.</p>
+<div class="proof admonition" id="proof">
+<p>Proof. Comme <span class="math notranslate nohighlight">\(TL(f)[p]\)</span> existe, on peut poser <span class="math notranslate nohighlight">\(G:x\mapsto \int_{x}^{+\infty}e^{-p_0 t}f(t)dt\)</span>.</p>
+<p>Maintenant, à l’aide de la généralisation de l’intégration par partie,
+<span class="math notranslate nohighlight">\(\int e^{-pt}f(t)\)</span> converge si
+<span class="math notranslate nohighlight">\([e^{(p_0-p)t}G(t)]\)</span> et <span class="math notranslate nohighlight">\(\int e^{(p_0-p)t}G(t)\)</span> convergent.</p>
+<p>Or <span class="math notranslate nohighlight">\(G\)</span> est une fonction bornée, donc pour <span class="math notranslate nohighlight">\(Re(p)&gt;Re(p_0)\)</span>, ces deux termes convergent.</p>
+</div>
+</section>
+</div><p><strong>Conséquence :</strong> <span class="math notranslate nohighlight">\(\{x \in \R, F(p)\text{ existe } \}\)</span> admet une borne inférieure dans <span class="math notranslate nohighlight">\(\R\cup\{-\infty\}\)</span>. On l’appelle <em>abscisse de convergence simple</em> de <span class="math notranslate nohighlight">\(F\)</span> (ou de <span class="math notranslate nohighlight">\(TL(f)\)</span>). On la note <span class="math notranslate nohighlight">\(x_c\)</span>.</p>
+<div class="proof proposition dropdown admonition" id="convergence_absolue">
+<p class="admonition-title"><span class="caption-number">Proposition 3.2 </span> (Domaine de convergence absolue)</p>
+<section class="proposition-content" id="proof-content">
+<p>On dit que <span class="math notranslate nohighlight">\(TL(f)\)</span> converge absolument en <span class="math notranslate nohighlight">\(p_0\)</span> si <span class="math notranslate nohighlight">\(\int_0^{+\infty} |e^{-p_0t}f(t)|dt &lt;+\infty\)</span>. Lorsque cela est le cas,  <span class="math notranslate nohighlight">\(TL(f)[p_0]\)</span> existe.</p>
+<p>Si <span class="math notranslate nohighlight">\(TL(f)\)</span> converge absolument en <span class="math notranslate nohighlight">\(p_0\)</span>, alors pour tout <span class="math notranslate nohighlight">\(p\in \C\)</span> tel que <span class="math notranslate nohighlight">\(Re(p)&gt;Re(p_0)\)</span>, <span class="math notranslate nohighlight">\(TL(f)[p]\)</span> converge absolument.</p>
+<div class="proof admonition" id="proof">
+<p>Proof. L’existence de la transformée est une conséquence de la construction de l’intégrale de Lebesgue.</p>
+<p>Le résultat est alors immédiat puisque pour <span class="math notranslate nohighlight">\(Re(p)&gt;Re(p_0)\)</span>, on a que <span class="math notranslate nohighlight">\(|e^{(p_0-p)t}|\leq 1\)</span>.</p>
+</div>
+</section>
+</div><p><strong>Conséquence :</strong> Encore une fois <span class="math notranslate nohighlight">\(\{x \in \R, F(p)\text{ converge absolument } \}\)</span> admet une borne inférieure. On l’appelle <em>abscisse de convergence absolue</em> de <span class="math notranslate nohighlight">\(F\)</span> (ou de <span class="math notranslate nohighlight">\(TL(f)\)</span>) et on la note <span class="math notranslate nohighlight">\(x_{ca}\)</span>.</p>
+</section>
+</div><div class="proof example admonition" id="example-3">
+<p class="admonition-title"><span class="caption-number">Example 3.1 </span></p>
+<section class="example-content" id="proof-content">
+<p>Considérons la fonction <span class="math notranslate nohighlight">\(Heav : t \mapsto \left\{\begin{matrix}
+    0&amp;\text{ si } t&lt;0\\1&amp;\text{ sinon.}
+\end{matrix}\right.\)</span>. On cherche à donner les abscisses de convergence et la valeur de la transformée lorsque celle-ci existe.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>Remarquons d’abord que puisque <span class="math notranslate nohighlight">\(Heav\)</span> est à valeur positive, l’abscisse de convergence simple et l’abscisse de convergence absolues sont identiques.</p>
+<p>Pour <span class="math notranslate nohighlight">\(x&lt;0\)</span>, il est immédiat que <span class="math notranslate nohighlight">\(Heav(t)e^{-x_0t}\underset{t\to +\infty}\to +\infty\)</span>.</p>
+<p>En particulier, l’intégrale généralisée diverge grossièrement. De plus, comme pour <span class="math notranslate nohighlight">\(x_0&gt;0\)</span>, <span class="math notranslate nohighlight">\(t\mapsto e^{-x_0t}\)</span> est d’intégrale généralisée convergente. Donc l’abscisse de convergence (simple et absolu) de la fonction <span class="math notranslate nohighlight">\(Heav\)</span> est <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<p>Maintenant, prenons <span class="math notranslate nohighlight">\(p\in \C\)</span> tel que <span class="math notranslate nohighlight">\(Re(p)&gt;0\)</span>. Alors</p>
+<div class="math notranslate nohighlight">
+\[TL(Heav)[p]=\int_0^{+\infty} Heav(t) e^{-pt}dt = \left[-\frac{1}{p}e^{-pt}\right]_0^{+\infty}=-0+\frac{1}{p}.\]</div>
+</div>
+</section>
+</div><div class="proof example admonition" id="example-4">
+<p class="admonition-title"><span class="caption-number">Example 3.2 </span></p>
+<section class="example-content" id="proof-content">
+<p>Soit <span class="math notranslate nohighlight">\(k&gt;0\)</span>, et considérons la fonction <span class="math notranslate nohighlight">\(f : t \mapsto e^{kt}e^{ie^{kt}}\)</span>. On cherche à donner les abscisses de convergence simple et absolue.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>Comme <span class="math notranslate nohighlight">\(|f(t)|=e^{kt}\)</span>, il est immédiat que <span class="math notranslate nohighlight">\(x_{ca}=k\)</span>
+(car <span class="math notranslate nohighlight">\(e^{(k-k_0)t}\)</span> est intégrable si et seulement si <span class="math notranslate nohighlight">\(k_0&gt;k\)</span>).</p>
+<p>Maintenant, considérons que</p>
+<div class="math notranslate nohighlight">
+\[\int_0^R e^{-pt}e^{kt}e^{ie^{kt}}dt=\left[e^{-pt}e^{ie^{kt}}\right]_0^R +p\int_{0}^R e^{-pt}e^{ie^{kt}}dt.\]</div>
+<p>Alors comme le crochet converge et l’intégrande à droite est intégrable dès que <span class="math notranslate nohighlight">\(Re(p)&gt;0\)</span>, nous aurons que <span class="math notranslate nohighlight">\(x_c=0\)</span>.</p>
+</div>
+</section>
+</div><div class="proof remark admonition" id="remark-5">
+<p class="admonition-title"><span class="caption-number">Remark 3.1 </span></p>
+<section class="remark-content" id="proof-content">
+<p>L’exemple précédent donne une idée de ce qui suffit pour avoir <span class="math notranslate nohighlight">\(x_c\neq x_{ca}\)</span> : une fonction très fortement oscillante.</p>
+</section>
+</div><div class="exercise admonition" id="exer_transformation_simple">
+
+<p class="admonition-title"><span class="caption-number">Exercise 3.1 </span></p>
+<section id="exercise-content">
+<p>Donner la transformée de Laplace de</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}f:t\mapsto \left\{\begin{matrix}
+        1&amp;\text{si }1&lt;t&lt;2\\0&amp;\text{sinon}
+    \end{matrix}\right.\end{split}\]</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>On peut directement calculer l’intégrale. Soit <span class="math notranslate nohighlight">\(p\in \C\)</span>, avec <span class="math notranslate nohighlight">\(p\neq 0\)</span></p>
+<div class="math notranslate nohighlight">
+\[TL(f)[p]=\int_0^{+\infty} f(t)e^{-pt}dt =\int_1^2 e^{-pt}dt\]</div>
+<div class="math notranslate nohighlight">
+\[=\left[\frac{e^{-pt}}{-p}\right]_1^2=\frac{e^{-p}-e^{-2p}}{p}\]</div>
+</div>
+</section>
+</div>
+</section>
+<section id="theoremes-fondamentaux">
+<h2><span class="section-number">3.1.2. </span>Théorèmes fondamentaux<a class="headerlink" href="#theoremes-fondamentaux" title="Link to this heading">#</a></h2>
+<div class="proof theorem admonition" id="theorem-7">
+<p class="admonition-title"><span class="caption-number">Theorem 3.1 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>Soit <span class="math notranslate nohighlight">\(f\)</span> une fonction continue par morceaux sur <span class="math notranslate nohighlight">\(\R_+\)</span> et absolument transformable.</p>
+<p>Alors <span class="math notranslate nohighlight">\(TL(f) : p\mapsto \int_0^{+\infty} e^{−pt}f (t)dt\)</span> est holomorphe sur <span class="math notranslate nohighlight">\(]x_{ca} , +\infty[\)</span> (et
+donc indéfiniment dérivable sur <span class="math notranslate nohighlight">\(]x_{ca} , +\infty[\)</span>) avec</p>
+<div class="math notranslate nohighlight">
+\[\frac{d^n}{dp^n}TL(f)[p]= \int_0^{+\infty}(-t)^ne^{-pt}f(t)dt.\]</div>
+<div class="proof admonition" id="proof">
+<p>Proof. L’holomorphie découle du théorème d’holomorphie sous le signe <span class="math notranslate nohighlight">\(\int\)</span> (voir <a class="reference internal" href="ch7sec1.html#annexe-derivation-sous-integrale"><span class="std std-ref">Dérivation sous le signe intégral de fonctions holomorphes</span></a>). La valeur des dérivées successives découle du même théorème, qui annonce que</p>
+<div class="math notranslate nohighlight">
+\[\frac{d^n}{dp^n}TL(f)[p]= \int_0^{+\infty}\frac{d^n}{dp^n}\left[e^{-pt}f(t)\right]dt.\]</div>
+</div>
+</section>
+</div><div class="proof theorem admonition" id="theorem-8">
+<p class="admonition-title"><span class="caption-number">Theorem 3.2 </span> (Abscisse de convergence et singularitées de la transformée)</p>
+<section class="theorem-content" id="proof-content">
+<p>Soit <span class="math notranslate nohighlight">\(F\)</span> une fonction de la variable complexe <span class="math notranslate nohighlight">\(p\)</span> holomorphe sur un ouvert maximal, qui est la transformée de Laplace d’une fonction <span class="math notranslate nohighlight">\(f\geq 0\)</span>.</p>
+<p>Alors F a une singularité (psi, point de branchement, barriere naturelle…) en le réel <span class="math notranslate nohighlight">\(x_c\)</span> (voir <span id="id1">[<a class="reference internal" href="biblio.html#id12" title="D. V. Widder. A generalization of dirichlet's series and of laplace's integrals by means of a stieltjes integral. Transactions of the American Mathematical Society, 31(4):694–743, 1929. URL: http://www.jstor.org/stable/1989558 (visited on 2025-02-14).">Widder, 1929</a>]</span>).</p>
+</section>
+</div><p><strong>En pratique :</strong>  Si <span class="math notranslate nohighlight">\(F\)</span> n’a que des p.s.i. (notés <span class="math notranslate nohighlight">\(s_k\)</span>) et des points de ramification de (extrémité des demi-droites de coupures notées <span class="math notranslate nohighlight">\(r_j\)</span>) et est la transformée d’une fonction réelle positive, alors l’abscisse de convergence vérifie :
+$<span class="math notranslate nohighlight">\(x_c(F) = \sup Re(s_k , r_j ).\)</span>$</p>
+<div class="proof example admonition" id="example-9">
+<p class="admonition-title"><span class="caption-number">Example 3.3 </span></p>
+<section class="example-content" id="proof-content">
+<p>En admettant qu’il s’agisse bien de transformée de Laplace d’une fonction <span class="math notranslate nohighlight">\(f\geq 0\)</span>, on a pour <span class="math notranslate nohighlight">\(F(p)=\frac{1}{p(p-2)}\)</span> que <span class="math notranslate nohighlight">\(x_c=2\)</span> et pour <span class="math notranslate nohighlight">\(F(p)=\frac{1}{p+1}\)</span> que <span class="math notranslate nohighlight">\(x_c=-1\)</span>.</p>
+</section>
+</div></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ch3intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span><i class="fas fa-book fa-fw"></i> Transformée de Laplace</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ch3sec2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span>Manipuler la transformée de Laplace</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fonctions-transformables">3.1.1. Fonctions transformables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theoremes-fondamentaux">3.1.2. Théorèmes fondamentaux</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By P. Fraux
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Lien vers la page principale du cours <a href="https://p-fraux.github.io/Cours-Mathematiques/intro.html"> Mathematiques de première année</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

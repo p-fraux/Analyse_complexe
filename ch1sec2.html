@@ -1,0 +1,893 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1.2. Fonctions complexes usuelles &#8212; Analyse complexe pour ingénieur - Introduction à la transformé de Laplace et à la transformé en Z</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="/Users/parent/opt/anaconda3/lib/python3.9/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/mystyle.css?v=0f3ba4bc" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/.ipynb_checkpoints/mystyle-checkpoint.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="/Users/parent/opt/anaconda3/lib/python3.9/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/js/all.min.js?v=ec35c6c9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "svg": {"fontCache": "global"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch1sec2';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1.3. Fonctions holomorphes" href="ch1sec3.html" />
+    <link rel="prev" title="1.1. Analyse dans le plan complexe" href="ch1sec1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/N7solo.png" class="logo__image only-light" alt="Analyse complexe pour ingénieur - Introduction à la transformé de Laplace et à la transformé en Z - Home"/>
+    <img src="_static/N7solo.png" class="logo__image only-dark pst-js-only" alt="Analyse complexe pour ingénieur - Introduction à la transformé de Laplace et à la transformé en Z - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Bienvenue au cours d’analyse complexe pour ingénieur
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="ch1intro.html">1. <i class="fas fa-book fa-fw"></i> Corps des complexes, fonctions usuelles et holomorphie</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ch1sec1.html">1.1. Analyse dans le plan complexe</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.2. Fonctions complexes usuelles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1sec3.html">1.3. Fonctions holomorphes</a></li>
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch2intro.html">2. <i class="fas fa-book fa-fw"></i> Intégration dans le corps des complexes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch2sec1.html">2.1. Intégrale curviligne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2sec2.html">2.2. Théorème de Cauchy et conséquences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2sec3.html">2.3. Singularités et Théorème des résidus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2sec4.html">2.4. Les fonctions harmoniques (H.P.)</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch3intro.html">3. <i class="fas fa-book fa-fw"></i> Transformée de Laplace</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch3sec1.html">3.1. Définition, domaine de validité et propriétée fondamentale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3sec2.html">3.2. Manipuler la transformée de Laplace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3sec3.html">3.3. Formule d’inversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3sec4.html">3.4. Exemple d’application</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch4intro.html">4. <i class="fas fa-book fa-fw"></i> Transformée en Z</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch4sec1.html">4.1. Définition et propriétés</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4sec2.html">4.2. Exemples d’applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4sec3.html">4.3. Lien avec la transformée de Laplace</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch7intro.html">5. <i class="fas fa-book fa-fw"></i>  Annexes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch7sec1.html">5.1. Dérivation sous le signe intégral de fonctions holomorphes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7sec2.html">5.2. Surjectivité de l’exponentielle complexe</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="biblio.html">6. <i class="fa-solid fa-book-open"></i> Bibliographie</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://p-fraux.github.io/Analyse_complexe/intro.html" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://p-fraux.github.io/Analyse_complexe/intro.html/issues/new?title=Issue%20on%20page%20%2Fch1sec2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ch1sec2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Fonctions complexes usuelles</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-algebriques">1.2.1. Applications algébriques</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series-entieres">1.2.2. Séries entières</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exponentielle-complexe-et-fonction-trigonometrique">1.2.3. Exponentielle complexe et fonction trigonométrique</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determination-de-l-argument-fonctions-associe-et-fonctions-multiformes">1.2.4. Détermination de l’argument, fonctions associé et fonctions multiformes</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="fonctions-complexes-usuelles">
+<h1><span class="section-number">1.2. </span>Fonctions complexes usuelles<a class="headerlink" href="#fonctions-complexes-usuelles" title="Link to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\(\newcommand{\R}{\mathbb{R}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\Q}{\mathbb{Q}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\N}{\mathbb{N}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\C}{\mathbb{C}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\Z}{\mathbb{Z}}\)</span></p>
+<section id="applications-algebriques">
+<h2><span class="section-number">1.2.1. </span>Applications algébriques<a class="headerlink" href="#applications-algebriques" title="Link to this heading">#</a></h2>
+<p>Que ce soit grâce à la nature géométrique du plan complexe ou au fait que ce soit un corps, il est possible de définir de nombreuses applications élémentaires, correspondantes aux opérations élémentaires. Sans nous attarder dessus, rappelons la définition des plus courantes :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{|c|c|c|c|}
+        \hline 
+        \text{Application} &amp; \text{Ensemble}&amp; \text{Nom transformation} &amp; \text{Paramètre} \\
+        \text{géométriques}&amp;\text{de définition} &amp; \text{géométrique associé}&amp;\\
+        \hline 
+        z\mapsto z+a &amp; \C&amp; \text{Translation} &amp; a\in \C\\
+         \hline 
+         z\mapsto e^{i\theta}z &amp; \C&amp; \text{Rotation} &amp; \theta\in \R\\
+         \hline 
+         z\mapsto rz &amp; \C&amp; \text{Dilatation} &amp; r\in \R\\
+         \hline 
+         z\mapsto az+b &amp; \C&amp; \text{Similitude} &amp; (a,b)\in \C^2\\
+         \hline 
+         z\mapsto \frac{1}{z} &amp; \C\backslash\{0\}&amp; \text{Inversion} &amp; \\
+         \hline          
+         z\mapsto \frac{az+b}{cz+d} &amp; \C\backslash\{-\frac{c}{d}\}&amp; \text{Homographie} &amp; (a,b,c,d)\in \C^4\\
+         \hline 
+\end{array}
+    \end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{|c|c|c|c|}
+        \hline 
+        \text{Application} &amp; \text{Ensemble}&amp; \text{Nom l'application} &amp; \text{Paramètre} \\
+        \text{algébriques}&amp;\text{de définition} &amp; &amp;\\
+        \hline 
+        z\mapsto a &amp; \C&amp; \text{Constante} &amp; a\in \C\\
+        \hline 
+        z\mapsto az+b &amp; \C&amp; \text{Affine} &amp; (a,b)\in \C^2\\
+         \hline 
+         z\mapsto az^2+bz+c &amp; \C&amp; \text{Quadratique} &amp; (a,b,c)\in \C^3\\
+         \hline 
+         z\mapsto \sum_{k=0}^n a_k z^k &amp; \C&amp; \text{Polynomiale, noté } \C[X] &amp; (a_k)\in \C^n\\
+         \hline 
+         z\mapsto \frac{P(z)}{Q(z)} &amp; \C\backslash\{z\in \C|Q(z)=0\}&amp; \text{Fraction rationnelle} &amp; (P,Q)\in \C[X]^2\\
+         \hline 
+    \end{array}\end{split}\]</div>
+</section>
+<section id="series-entieres">
+<h2><span class="section-number">1.2.2. </span>Séries entières<a class="headerlink" href="#series-entieres" title="Link to this heading">#</a></h2>
+<div class="proof definition admonition" id="Serie_entiere">
+<p class="admonition-title"><span class="caption-number">Definition 1.6 </span> (Série entière)</p>
+<section class="definition-content" id="proof-content">
+<p>On appelle <em>série entière</em> (au point <span class="math notranslate nohighlight">\(a\in \C\)</span>) toute fonction <span class="math notranslate nohighlight">\(f\)</span> de la forme :</p>
+<div class="math notranslate nohighlight">
+\[f :z\mapsto\sum_{n=0}^{\infty} a_n (z-a)^n\]</div>
+<p>en tout point en lequel <span class="math notranslate nohighlight">\(f\)</span> est bien posée et pour une certaine suite <span class="math notranslate nohighlight">\(a_n\in \C\)</span>.</p>
+<p>Si cette relation n’est vraie que sur un ouvert <span class="math notranslate nohighlight">\(\Omega\ni a\)</span>, on dira que f est <em>développable en série entière sur</em> <span class="math notranslate nohighlight">\(\Omega\)</span>. Lorsque cela est le cas, la suite des <span class="math notranslate nohighlight">\(a_n\)</span> est unique.</p>
+<div class="proof example dropdown admonition" id="example-1">
+<p class="admonition-title"><span class="caption-number">Example 1.3 </span></p>
+<section class="example-content" id="proof-content">
+<ul class="simple">
+<li><p>Les polynômes sont des séries entières, pour lesquelles <span class="math notranslate nohighlight">\(a_n\)</span> est nul à partir d’un certain rang.</p></li>
+<li><p>Peut-être plus intéressant, la fonction <span class="math notranslate nohighlight">\(z\mapsto \frac{1}{1-z}\)</span> est développable en série entière sur <span class="math notranslate nohighlight">\(B(0,1)\)</span> en 0. Rappelons que pour <span class="math notranslate nohighlight">\(z\neq 1\)</span>,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\sum_{k=1}^n z^k=\frac{1-z^{n+1}}{1-z}.\]</div>
+<p>Prenons un <span class="math notranslate nohighlight">\(z\)</span> tel que <span class="math notranslate nohighlight">\(|z|&lt;1\)</span> et notons qu’alors</p>
+<div class="math notranslate nohighlight">
+\[\frac{1-z^{n+1}}{1-z}\underset{n\to \infty}{\to} \frac{1}{1-z}\]</div>
+<p>(Pour <span class="math notranslate nohighlight">\(|z|\geq1\)</span>, la série diverge, puisque le terme général ne tend pas vers 0).</p>
+</section>
+</div><p>Soit <span class="math notranslate nohighlight">\((a_n)\in \C^\N\)</span> une suite de nombres complexes.</p>
+<p>On appelle <em>rayon de convergence</em> de la série associé le nombre <span class="math notranslate nohighlight">\(R\)</span> définit par</p>
+<div class="math notranslate nohighlight">
+\[R:=\sup\left\{r\geq0, \sum a_n r^n \text{ converge}\right\}\]</div>
+<p>On appelle <em>disque de convergence de la série entière en <span class="math notranslate nohighlight">\(a\)</span></em> le disque <span class="math notranslate nohighlight">\(B(a,R)\)</span>.</p>
+<div class="proof theorem dropdown admonition" id="theorem-2">
+<p class="admonition-title"><span class="caption-number">Theorem 1.1 </span> (Caractérisation de la convergence)</p>
+<section class="theorem-content" id="proof-content">
+<p>Soit <span class="math notranslate nohighlight">\((a_n)\in \C^\N\)</span> une suite de nombres complexes.</p>
+<p>On pose</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{R_0}=\limsup\limits_n |a_n|^{1/n}.\]</div>
+<p>Alors le rayon de convergence de la série associé à <span class="math notranslate nohighlight">\((a_n)\)</span> est <span class="math notranslate nohighlight">\(R_0\)</span>.</p>
+<p>Plus précisément, pour tout <span class="math notranslate nohighlight">\(a\)</span>, la série entière <span class="math notranslate nohighlight">\({\displaystyle \sum_{n=0}^\infty a_n(z-a)^n}\)</span> :</p>
+<ul class="simple">
+<li><p>converge absolument pour <span class="math notranslate nohighlight">\(z\in B(a,R_0)\)</span>,</p></li>
+<li><p>diverge pour <span class="math notranslate nohighlight">\(|z-a|&gt;R_0\)</span>,</p></li>
+<li><p>converge normalement sur tous compacts de <span class="math notranslate nohighlight">\(B(a,R_0)\)</span>.</p></li>
+</ul>
+<div class="proof admonition" id="proof">
+<p>Proof. Pour montrer que <span class="math notranslate nohighlight">\(R_0\)</span> est bien le rayon de convergence, il suffit de montrer les trois points du théorème.</p>
+<p>Quitte à translater en posant <span class="math notranslate nohighlight">\(w=z-a\)</span>, on peut supposer pour la démonstration que <span class="math notranslate nohighlight">\(a=0\)</span>.</p>
+<p>Considérons <span class="math notranslate nohighlight">\(r&lt;R_0\)</span> et <span class="math notranslate nohighlight">\(r&lt;R&lt;R_0\)</span>. Alors comme <span class="math notranslate nohighlight">\(\frac{1}{R}&gt;\frac{1}{R_0}\)</span>, alors par définition de la limite supérieur, <span class="math notranslate nohighlight">\(|a_n|^{1/n} &lt;\frac{1}{R}\)</span> à partir d’un certain rang, et donc que <span class="math notranslate nohighlight">\(a_n&lt;\frac{1}{R^n}\)</span> à partir d’un certain rang. Soit alors <span class="math notranslate nohighlight">\(z\in B(0,r)\)</span>, on vérifie que
+<span class="math notranslate nohighlight">\(|a_n z^n|=O(\frac{r^n}{R^n})\)</span>. Par théorème de comparaison, la série entière converge absolument, et même normalement sur <span class="math notranslate nohighlight">\(\overline{B}(0,r)\)</span>, ce qui prouve les points 1 et 3.</p>
+<p>Maintenant, soit <span class="math notranslate nohighlight">\(z\)</span> tel que <span class="math notranslate nohighlight">\(|z|&gt;R_0\)</span> et considérons. Comme précédemment, <span class="math notranslate nohighlight">\(|a_n|&gt;\frac{1}{|z|^{n}}\)</span> à partir d’un certain rang, et donc <span class="math notranslate nohighlight">\(|a_nz^n|&gt;1\)</span> à partir d’un certain rang. Ainsi, la série entière diverge grossièrement, ce qui prouve le point 2.</p>
+</div>
+<div class="proof remark admonition" id="remark-3">
+<p class="admonition-title"><span class="caption-number">Remark 1.4 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Pour <span class="math notranslate nohighlight">\(|z|=R\)</span>, on ne peut rien dire en général. Ainsi, malgré le fait que les trois séries suivantes aient un rayon de convergence égal à 1, on a que :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\sum z^n\)</span> diverge quand <span class="math notranslate nohighlight">\(|z|=1\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sum \frac{z^n}{n}\)</span> diverge pour <span class="math notranslate nohighlight">\(z=1\)</span> et converge pour <span class="math notranslate nohighlight">\(z=-1\)</span> (par critère des séries alternées),</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sum \frac{z^n}{n^2}\)</span> converge absolument en <span class="math notranslate nohighlight">\(|z|=1\)</span>.</p></li>
+</ul>
+</section>
+</div></section>
+</div></section>
+</div><div class="exercise dropdown admonition" id="serie_entiere">
+
+<p class="admonition-title"><span class="caption-number">Exercise 1.5 </span></p>
+<section id="exercise-content">
+<p>Determiner le rayone de convergence de la série entière <span class="math notranslate nohighlight">\(\sum (\frac{n+1}{n})^{n^2} z^n\)</span>.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>Comme <span class="math notranslate nohighlight">\(|a_n|^{1/n}=(\frac{n+1}{n})^n=(1+\frac{1}{n})^n\to e\)</span>, le théorème précédent nous assure que le rayon de convergence de la série entière est égale à <span class="math notranslate nohighlight">\(e^{-1}\)</span>.</p>
+</div>
+</section>
+</div>
+<p>Dans le cadre des séries entières, si <span class="math notranslate nohighlight">\(\lim\limits_{n\to \infty} |\frac{u_{n+1}}{u_n}|=L\)</span> existe, alors le rayon de convergence de la série est <span class="math notranslate nohighlight">\(R=\frac{1}{L}\)</span> (critère de convergence des séries de D’Alembert).</p>
+<div class="proof proposition dropdown admonition" id="proposition_serie_entiere">
+<p class="admonition-title"><span class="caption-number">Proposition 1.6 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>Considérons deux fonctions développables en série entières <span class="math notranslate nohighlight">\(f(z)=\sum_{n=0}^\infty a_n(z-a)^n\)</span> et <span class="math notranslate nohighlight">\(g(z)=\sum_{n=0}^\infty b_n(z-b)^n\)</span> de rayon de convergence respectif <span class="math notranslate nohighlight">\(R_1\)</span> et <span class="math notranslate nohighlight">\(R_2\)</span> strictement positif. Alors</p>
+<ul class="simple">
+<li><p>Si <span class="math notranslate nohighlight">\(a=b=z_0\)</span>, alors <span class="math notranslate nohighlight">\(f+g\)</span> est développable en série entière avec <span class="math notranslate nohighlight">\((f+g)(z)=\sum_{n=0}^\infty (a_n+b_n)(z-z_0)^n\)</span> et un rayon de convergence <span class="math notranslate nohighlight">\(R\geq \min(R_1,R_2)\)</span>.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(a=b=z_0\)</span>, alors <span class="math notranslate nohighlight">\(f\times g\)</span> est développable en série entière avec <span class="math notranslate nohighlight">\((f\times g)(z)=\sum_{n=0}^\infty\left(\sum_{k=0}^n a_kb_{n-k}\right)(z-z_0)^n\)</span> et un rayon de convergence <span class="math notranslate nohighlight">\(R\geq \min(R_1,R_2)\)</span>.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(a=g(b)\)</span>, alors <span class="math notranslate nohighlight">\(f\circ g\)</span> est développable en série entière avec un rayon de convergence strictement positif.</p></li>
+</ul>
+<div class="proof admonition" id="proof">
+<p>Proof. - Pour le premier point, il s’agit de la convergence de la somme de série.</p>
+<ul class="simple">
+<li><p>Pour le deuxième, il s’agit du produit de Cauchy de deux séries, les séries entières convergeant absolument sur le disque ouvert de convergence.</p></li>
+<li><p>Supposons que <span class="math notranslate nohighlight">\(R_1,R_2&gt;0\)</span> pour le dernier point. Comme <span class="math notranslate nohighlight">\(g(b)=a\)</span>, on peut sans perte de généralité supposer que <span class="math notranslate nohighlight">\(a=b=0\)</span> et <span class="math notranslate nohighlight">\(g(0)=0\)</span>. En travaillant dans <span class="math notranslate nohighlight">\([0,+\infty]\)</span>, on a avec le théorème de Tonelli que</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\sum_{n=0}^\infty |a_n|\left(\sum_{i=0}^\infty |b_i|\times |z|^i\right)^n  = \sum_{n=0}^{+\infty}|a_n| \sum_{i_1,...,i_n \in \N} \prod_{k=1}^n |b_{i_k}z^{i_k}| \]</div>
+<div class="math notranslate nohighlight">
+\[= \sum_{p=0}^{+\infty} \left(\sum_{\underset{i_1+...+i_n=p}{n, i_1,...,i_n}}|a_n|\prod_k |b_{i_k}|\right)|z|^p \]</div>
+<p>(comme <span class="math notranslate nohighlight">\(b_0=0\)</span>, la somme intérieure est en fait une somme finie).</p>
+<p>Or, <span class="math notranslate nohighlight">\(R_2&gt;0\)</span> implique que la série <span class="math notranslate nohighlight">\(\sum_{i=1}^\infty b_iz^i\)</span> est normalement convergente dans le disque <span class="math notranslate nohighlight">\(B(0,\frac{R_2}{2})\)</span> et donc que la fonction <span class="math notranslate nohighlight">\(z\mapsto \sum_{i=1}^{+\infty} |b_i|z^i\)</span> soit continue comme limite uniforme de fonctions continues (car polynomiale).</p>
+<p>En particulier, il existe <span class="math notranslate nohighlight">\(r&lt;R_2\)</span> tel que  <span class="math notranslate nohighlight">\((\sum_{i=0}^\infty |b_i|\times r^i=\sum_{i=1}^{+\infty} |b_i|r^i&lt;R_1\)</span>. Pour un tel <span class="math notranslate nohighlight">\(r\)</span>, les quantités considérées ci-dessus sont toutes finies. Le théorème de Fubini permet alors de conclure (en refaisant le même calcul) que <span class="math notranslate nohighlight">\(f\circ g\)</span> est développable en série entières, avec</p>
+<div class="math notranslate nohighlight">
+\[ f\circ g(z) = \sum_{p=0}^{+\infty} \left(\sum_{\underset{i_1+...+i_n=p}{n, i_1,...,i_n}}a_n\prod_k b_{i_k}\right)z^p.\]</div>
+</div>
+</section>
+</div><div class="exercise dropdown admonition" id="serie_entiere_fraction">
+
+<p class="admonition-title"><span class="caption-number">Exercise 1.6 </span></p>
+<section id="exercise-content">
+<p>Soient <span class="math notranslate nohighlight">\(P,Q \in \C[X]\)</span> deux polynômes, et soit <span class="math notranslate nohighlight">\(z_0\)</span> tel que <span class="math notranslate nohighlight">\(Q(z_0)=a\neq 0\)</span>. Alors la fonction rationnelle <span class="math notranslate nohighlight">\(z\mapsto \frac{P(z)}{Q(z)}\)</span> est développable en série entière.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>Par produit, il suffit de montrer que <span class="math notranslate nohighlight">\(z\mapsto \frac{1}{Q(z)}=\frac{1}{a+(Q(z)-a)}=\frac{1}{a}\frac{1}{1-(a-Q(z))/a}\)</span> est développable en série entière. Ceci est vrai par composition de la fonction <span class="math notranslate nohighlight">\(z\mapsto \frac{1}{1-z}\)</span> avec un polynôme s’annulant en <span class="math notranslate nohighlight">\(z_0\)</span>.</p>
+</div>
+</section>
+</div>
+<div class="exercise dropdown admonition" id="partition">
+
+<p class="admonition-title"><span class="caption-number">Exercise 1.7 </span></p>
+<section id="exercise-content">
+<p>Le but de cet exercice est de démontrer qu’il n’existe aucune partition non triviale de <span class="math notranslate nohighlight">\(\N\)</span> formée de suites arithmétiques de raison différentes, c’est-à-dire qu’il n’existe pas de partition (union disjointe) de la forme</p>
+<div class="math notranslate nohighlight">
+\[\N=S_1\bigsqcup S_2\bigsqcup \cdots \bigsqcup S_m,\]</div>
+<p>avec <span class="math notranslate nohighlight">\(m\geq 2\)</span>, <span class="math notranslate nohighlight">\(S_j:=\{a_j+k d_j, k\geq 0\}\)</span> où <span class="math notranslate nohighlight">\(a_1,...,a_n\in \N\)</span> et <span class="math notranslate nohighlight">\(1&lt;d_1&lt;d_2&lt;\cdots&lt;d_m\)</span> entiers.</p>
+<p>a) Par l’absurde, supposons qu’une telle partition existe. En déduire que pour tout <span class="math notranslate nohighlight">\(|z|&lt;1\)</span>, on aurait</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{1-z}=\frac{z^{a_1}}{1-z^{d_1}}+\frac{z^{a_2}}{1-z^{d_2}}+\cdots +\frac{z^{a_m}}{1-z^{d_m}}\]</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution a)</p>
+<p>Si une telle partition existait, l’on aurait</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{1-z}=\sum_{i=0}^{+\infty} z^{i}=\sum_{j=0}^m\sum_{i\in S_j}z^i \]</div>
+<p>Car pour une série qui converge absolument, l’ordre de sommation n’importe pas</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{1-z}=\sum_{j=1}^m\sum_{k=0}^{+\infty}z^{a_j}(z^{d_j})^k.\]</div>
+</div>
+<p>b) Conclure à une absurdité à l’aide d’une suite <span class="math notranslate nohighlight">\((z_n)\subset D(0,1)\)</span> telle que <span class="math notranslate nohighlight">\(z_n \to e^{\frac{2i\pi}{d_m}}\)</span>.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution b)</p>
+<p>Comme suggéré dans l’énoncé, on prend une telle suite (par exemple <span class="math notranslate nohighlight">\(z_n\left(1-\frac{1}{n}\right)e^{\frac{2i\pi}{d_m}}\)</span>). Alors, <span class="math notranslate nohighlight">\(\frac{1}{1-z_n}\to \frac{1}{1-e^{\frac{2i\pi}{d_m}}}\)</span>, et également</p>
+<div class="math notranslate nohighlight">
+\[\forall j\neq m, \frac{{z_n}^{a_k}}{1-{z_n}^{d_k}}\to \frac{e^{\frac{2i\pi a_k}{d_m}}}{1-e^{\frac{2i\pi d_k}{d_m}}}.\]</div>
+<p>En revanche, <span class="math notranslate nohighlight">\(|\frac{{z_n}^{a_m}}{1-{z_n}^{d_m}}|\to +\infty\)</span>. Ce qui est donc une absurdité au vu des règles sur les limites.</p>
+</div>
+</section>
+</div>
+</section>
+<section id="exponentielle-complexe-et-fonction-trigonometrique">
+<h2><span class="section-number">1.2.3. </span>Exponentielle complexe et fonction trigonométrique<a class="headerlink" href="#exponentielle-complexe-et-fonction-trigonometrique" title="Link to this heading">#</a></h2>
+<div class="proof definition admonition" id="definition-8">
+<p class="admonition-title"><span class="caption-number">Definition 1.7 </span></p>
+<section class="definition-content" id="proof-content">
+<p>La série entière</p>
+<div class="math notranslate nohighlight">
+\[f : z \mapsto \sum_{n=0}^{+\infty} \frac{z^n}{n!}\]</div>
+<p>a un rayon de convergence infini. On l’appelle exponentielle complexe. On note <span class="math notranslate nohighlight">\(exp(z)\)</span> ou <span class="math notranslate nohighlight">\(e^z\)</span> son image.</p>
+<p>On définit également le cosinus, sinus, cosinus hyperbolique et sinus hyperbolique par :</p>
+<div class="math notranslate nohighlight">
+\[\cos(z)=\frac{e^{iz}+e^{-iz}}{2},\qquad \sin(z)=\frac{e^{iz}-e^{-iz}}{2i},\]</div>
+<div class="math notranslate nohighlight">
+\[\cosh(z)=\frac{e^{z}+e^{-z}}{2},\qquad \sinh(z)=\frac{e^{z}-e^{-z}}{2}.\]</div>
+<div class="proof proposition dropdown admonition" id="proposition-9">
+<p class="admonition-title"><span class="caption-number">Proposition 1.7 </span> (Formule de passage)</p>
+<section class="proposition-content" id="proof-content">
+<p>Un retour à la définition permet de montrer que</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left\{\begin{matrix}
+    \cos(iz)=\cosh(z)\\ \sin(iz)=i\sinh(z)\\
+    \tan(iz)=i\tanh(z)
+\end{matrix}\right. \qquad\text{ et }\qquad \left\{\begin{matrix}
+    \cosh(iz)=\cos(z)\\ \sinh(iz)=i\sin(z)\\
+    \tanh(iz)=i\tan(z)
+\end{matrix}\right. \end{split}\]</div>
+</section>
+</div></section>
+</div><div class="exercise dropdown admonition" id="annulation_cosinus">
+
+<p class="admonition-title"><span class="caption-number">Exercise 1.8 </span></p>
+<section id="exercise-content">
+<p>Résoudre dans <span class="math notranslate nohighlight">\(\C\)</span> les équations</p>
+<div class="math notranslate nohighlight">
+\[(1) : \cos(z)=2 \qquad (2) : \cosh(z)=0\]</div>
+<p>Comparer les résultats aux mêmes équations dans <span class="math notranslate nohighlight">\(\R\)</span>.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>On revient à la définition du cosinus complexe :</p>
+<div class="math notranslate nohighlight">
+\[\cos(z)=2\iff \frac{e^{iz}+e^{-iz}}{2}=2\iff e^{iz}+e^{-iz}-4=0,\]</div>
+<div class="math notranslate nohighlight">
+\[\iff e^{2iz}+1-4e^{iz}=0,\iff Y^2-4Y+1=0 \qquad \text{ où }Y=e^{iz}.\]</div>
+<p>Or les solutions de cette équation quadratiques sont : <span class="math notranslate nohighlight">\(Y_±=\frac{4±\sqrt{12}}{2}=2±\sqrt{3}\)</span>.
+Donc</p>
+<div class="math notranslate nohighlight">
+\[\cos(z)=2\iff e^{iz}=2+\sqrt{3} \text{ ou } e^{iz}=2+\sqrt{3},\]</div>
+<div class="math notranslate nohighlight">
+\[\iff \exists k\in \Z, iz=\ln(2+\sqrt{3}) +2ik\pi \text{ ou } iz=\ln(2+\sqrt{3}) +2ik\pi,\]</div>
+<div class="math notranslate nohighlight">
+\[\iff z\in \{2k\pi+i\ln(2±\sqrt{3}), k\in \Z\}.\]</div>
+<p>Pour la deuxième équation, on écrit pour <span class="math notranslate nohighlight">\(z\in \C\)</span> que</p>
+<div class="math notranslate nohighlight">
+\[\cosh(z)=0\iff \frac{e^{z}+e^{-z}}{2}=0 \iff e^{z}=-e^{-z},\]</div>
+<div class="math notranslate nohighlight">
+\[\iff e^{2z}=-1=e^{i\pi}\iff \exists k \in \Z, z=i\left(\frac{\pi}{2}+k\pi\right).\]</div>
+<p>On remarque que, contrairement à <span class="math notranslate nohighlight">\(\R\)</span>, ces deux équations ont des solutions complexes.</p>
+</div>
+</section>
+</div>
+<div class="proof proposition dropdown admonition" id="proposition-11">
+<p class="admonition-title"><span class="caption-number">Proposition 1.8 </span> (Propriétés de l’exponentielle)</p>
+<section class="proposition-content" id="proof-content">
+<ul class="simple">
+<li><p>Pour <span class="math notranslate nohighlight">\(x\in \R\)</span>, la fonction exponentielle définie par sa série entière coïncide avec la fonction exponentielle réelle. En particulier, <span class="math notranslate nohighlight">\(f(0)=1\)</span>.</p></li>
+<li><p>Pour <span class="math notranslate nohighlight">\((z_1,z_2)\in \C^2\)</span>, l’application exponentielle vérifie <span class="math notranslate nohighlight">\(e^{z_1+z_2}=e^{z_1}e^{z_2}\)</span>.</p></li>
+<li><p>Pour <span class="math notranslate nohighlight">\(z\in \C\)</span>, <span class="math notranslate nohighlight">\(e^{-z}=\frac{1}{e^z}\)</span>.</p></li>
+<li><p>Pour <span class="math notranslate nohighlight">\(y\in \R\)</span>, <span class="math notranslate nohighlight">\(e^{iy}\in \mathbb{U}\)</span>, et en particulier <span class="math notranslate nohighlight">\(e^{x+iy}=\cos(y)e^x+i\sin(y)e^x\)</span> est une décomposition polaire.</p></li>
+</ul>
+<div class="proof admonition" id="proof">
+<p>Proof. - Les résultats de dérivation sous le signe <span class="math notranslate nohighlight">\(\sum\)</span> que nous reverrons en <a class="reference internal" href="ch1sec3.html#serie-et-derivation"><span class="std std-ref">Différentiabilité dans \R^2 et \C-dérivabilité</span></a> et rappelé en <a class="reference internal" href="ch7sec1.html#annexe-derivation-sous-integrale"><span class="std std-ref">Dérivation sous le signe intégral de fonctions holomorphes</span></a> montrent que
+<span class="math notranslate nohighlight">\(f'(x)=\sum_{i=0}^{+\infty}\frac{1}{n!} nz^{n-1} = f(z)\)</span>.</p>
+<p>Comme de plus <span class="math notranslate nohighlight">\(f(0) = 1+\sum_{i=1}^{+\infty}\frac{0^n}{n!}=1\)</span>, l’application associée à la série entière vérifie les mêmes conditions en 0 et la même équation différentielle que l’exponentielle réelle. D’après le théorème de Cauchy sur les équations différentielles ordinaires, ces deux fonctions coïncident donc.</p>
+<ul class="simple">
+<li><p>Ce deuxième résultat découle directement du produit de Cauchy de deux séries :</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[e^{z_1}e^{z_2}= \left(\sum_{i=0}^{+\infty} \frac{z_1^n}{n!}\right)\left(\sum_{i=0}^{+\infty} \frac{z_2^n}{n!}\right)= \sum_{k=0}^{+\infty} \sum_{n+m=k}\frac{z_1^n}{n!}\frac{z_2^m}{m!},\]</div>
+<div class="math notranslate nohighlight">
+\[=\sum_{k=0}^{+\infty} \sum_{n+m=k}\frac{1}{k!}\frac{k!}{n!m!}z_1^nz_2^m\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}=\sum_{k=0}^{+\infty}\frac{1}{k!} \sum_{n=0}^k\begin{pmatrix}
+                k\\n
+            \end{pmatrix}z_1^nz_2^{k-n}=\sum_{k=0}^{+\infty} \frac{(z_1+z_2)^k}{k!}.\end{split}\]</div>
+<ul class="simple">
+<li><p>On déduit directement les derniers points du précédent à l’aide du fait que <span class="math notranslate nohighlight">\(f(0)=1\)</span> :</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[e^ze^{-z}=e^{z-z}=e^0=1.\]</div>
+<p>Comme pour <span class="math notranslate nohighlight">\(y\in \R\)</span>,
+<span class="math notranslate nohighlight">\(\frac{1}{e^{iy}}=e^{-iy}=\overline{e^{iy}},\)</span>
+on a bien que <span class="math notranslate nohighlight">\(|e^{iy}|^2=\overline{e^{iy}}e^{iy}=1.\)</span></p>
+</div>
+</section>
+</div><div class="proof proposition dropdown admonition" id="proposition-12">
+<p class="admonition-title"><span class="caption-number">Proposition 1.9 </span> (Noyeau de l’exponentielle)</p>
+<section class="proposition-content" id="proof-content">
+<p>Le noyau du morphisme de groupe défini par la fonction exponentielle vérifie :</p>
+<div class="math notranslate nohighlight">
+\[\{z\in \C| e^z=1\} = \{2i k \pi, k\in \Z\}\]</div>
+<div class="proof admonition" id="proof">
+<p>Proof. L’inclusion réciproque est évidente. Soit <span class="math notranslate nohighlight">\(z\in \C\)</span> tel que <span class="math notranslate nohighlight">\(e^z=1\)</span>.</p>
+<p>En passant par la partie réelle et la partie imaginaire, et en utilisant que <span class="math notranslate nohighlight">\(|e^z|=1\)</span>, on trouve avec la propriété précédente que <span class="math notranslate nohighlight">\(Re(z)=0\)</span>, puis que <span class="math notranslate nohighlight">\(\cos(Im(z))=1\)</span> et <span class="math notranslate nohighlight">\(\sin(Im(z))=0\)</span>, ce qui montre que <span class="math notranslate nohighlight">\(Im(z)\in 2\pi\Z\)</span>. Tout ceci permet de conclure que <span class="math notranslate nohighlight">\(z\in  \{2i k \pi, k\in \Z\}\)</span>, ce qu’il fallait démontrer.</p>
+</div>
+</section>
+</div></section>
+<section id="determination-de-l-argument-fonctions-associe-et-fonctions-multiformes">
+<h2><span class="section-number">1.2.4. </span>Détermination de l’argument, fonctions associé et fonctions multiformes<a class="headerlink" href="#determination-de-l-argument-fonctions-associe-et-fonctions-multiformes" title="Link to this heading">#</a></h2>
+<p>Une fonction multiforme est la relaxation de la définition d’applications, où l’on ne demande plus nécessairement que l’image d’un point soit unique.</p>
+<a class="reference internal image-reference" href="_images/multiforme.png" id="fig-multiforme"><img alt="_images/multiforme.png" class="align-center" id="fig-multiforme" src="_images/multiforme.png" style="width: 400px;" /></a>
+<div class="proof definition admonition" id="definition-13">
+<p class="admonition-title"><span class="caption-number">Definition 1.8 </span></p>
+<section class="definition-content" id="proof-content">
+<p>La fonction “argument d’un nombre complexe”, noté <span class="math notranslate nohighlight">\(arg\)</span>, est une fonction multiforme de <span class="math notranslate nohighlight">\(\C^*\)</span> dans <span class="math notranslate nohighlight">\(\R\)</span> telle que</p>
+<div class="math notranslate nohighlight">
+\[\forall z\in \C^*, z=|z|e^{i arg(z)}.\]</div>
+<p>où l’on a notée abusivement <span class="math notranslate nohighlight">\(e^{i arg(z)}\)</span> pour l’image par l’application <span class="math notranslate nohighlight">\(w\mapsto e^{iw}\)</span> de n’importe quel élément dans l’image de <span class="math notranslate nohighlight">\(z\)</span> par <span class="math notranslate nohighlight">\(arg\)</span>.</p>
+<p>Cette définition utilise de manière implicite que l’exponentielle complexe est surjective de <span class="math notranslate nohighlight">\(\C\)</span> dans <span class="math notranslate nohighlight">\(\C^*\)</span>. Une preuve de cette propriété est donnée ici : <a class="reference internal" href="ch7sec2.html#annexe-surjectivite-exponentielle"><span class="std std-ref">Surjectivité de l’exponentielle complexe</span></a></p>
+<p>On appelle détermination de rang <span class="math notranslate nohighlight">\(k\)</span> de droite de coupure <span class="math notranslate nohighlight">\(\R_+\)</span> l’application <span class="math notranslate nohighlight">\(arg_k : z\in \C\backslash \R_+\mapsto \theta \in ]2k\pi,2(k+1)\pi[\)</span> qui à un nombre complexe <span class="math notranslate nohighlight">\(z\)</span> qui n’est pas dans la demi-droite des réels positifs l’unique valeur <span class="math notranslate nohighlight">\(\theta\in ]2k\pi,2(k+1)\pi[\)</span> telle que <span class="math notranslate nohighlight">\(z=e^{i\theta}\)</span>.</p>
+<p>Plus généralement, pour tout angle <span class="math notranslate nohighlight">\(\alpha\)</span>, on appelle détermination de rang <span class="math notranslate nohighlight">\(k\)</span> d’angle de coupure <span class="math notranslate nohighlight">\(\alpha\)</span> la détermination de l’angle à valeur dans <span class="math notranslate nohighlight">\(]\alpha+2k\pi,\alpha+2(k+1)\pi[\)</span>, noté <span class="math notranslate nohighlight">\(arg_{k\alpha}\)</span>. Sa droite de coupure est alors <span class="math notranslate nohighlight">\(D_\alpha\)</span> la demi-droite passant par l’origine et faisant un angle <span class="math notranslate nohighlight">\(\alpha\)</span> avec <span class="math notranslate nohighlight">\(\R_+\)</span>.</p>
+</section>
+</div><figure class="align-center" id="fig-determination-argument">
+<a class="reference internal image-reference" href="_images/Argument_principal.png"><img alt="_images/Argument_principal.png" src="_images/Argument_principal.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.6 </span><span class="caption-text">Représentation graphique de la détermination de rang <span class="math notranslate nohighlight">\(k\)</span> de droite de coupure <span class="math notranslate nohighlight">\(\R_+\)</span></span><a class="headerlink" href="#fig-determination-argument" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="fig-determination-argument-2">
+<a class="reference internal image-reference" href="_images/Argument_2.png"><img alt="_images/Argument_2.png" src="_images/Argument_2.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.7 </span><span class="caption-text">Représentation graphique de la détermination de rang <span class="math notranslate nohighlight">\(k\)</span> de droite de coupure <span class="math notranslate nohighlight">\(D_\alpha\)</span></span><a class="headerlink" href="#fig-determination-argument-2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="proof remark dropdown admonition" id="remark-14">
+<p class="admonition-title"><span class="caption-number">Remark 1.5 </span></p>
+<section class="remark-content" id="proof-content">
+<ul class="simple">
+<li><p>On appelle droite de coupure la droite <span class="math notranslate nohighlight">\(D_\alpha\)</span>.</p></li>
+<li><p>Il est possible à partir d’une détermination de donner une unique valeur de l’argument sur <span class="math notranslate nohighlight">\(\C^*\)</span>. Une telle fonction ne sera alors plus continue (pour s’en convaincre, approcher l’angle de coupure par le “bord inférieur” et par “bord supérieur”.</p></li>
+<li><p>Le point O origine de la coupure est appelée point de branchement ou point de ramification. Il est vain de chercher à lui attribuer un argument, puisqu’il n’appartient pas à l’image de l’exponentielle complexe.</p></li>
+<li><p>La représentation de la coupure en pointillé dans les figures <a class="reference internal" href="#fig-determination-argument"><span class="std std-ref">Représentation graphique de la détermination de rang k de droite de coupure \R_+</span></a> et <a class="reference internal" href="#fig-determination-argument-2"><span class="std std-ref">Représentation graphique de la détermination de rang k de droite de coupure D_\alpha</span></a> propose une stratégie de contournement de la droite de coupure lorsque l’on construira des contours d’intégration dans <a class="reference internal" href="ch2sec2.html#cauchy"><span class="std std-ref">Théorème de Cauchy</span></a>.</p></li>
+<li><p>Lorsque l’on manipulera des chemins fermés entourant le point de branchement, cela reviendra à un changement de détermination (changement de spire du ressort).</p></li>
+<li><p>On appelle <span class="math notranslate nohighlight">\(arg_{k,-\pi}\)</span> la détermination principale de l’argument et on le note <span class="math notranslate nohighlight">\(Arg\)</span>. Si <span class="math notranslate nohighlight">\(x=Re(z)\)</span> et <span class="math notranslate nohighlight">\(y=Im(z)\)</span>, alors pour <span class="math notranslate nohighlight">\(z\notin \R_-\)</span>, on a <span class="math notranslate nohighlight">\(Arg(z)=2\arctan\left(\frac{y}{x+\sqrt{x^2+y^2}}\right) \in]-\pi,\pi[\)</span>.</p></li>
+</ul>
+</section>
+</div><div class="proof definition admonition" id="definition-15">
+<p class="admonition-title"><span class="caption-number">Definition 1.9 </span></p>
+<section class="definition-content" id="proof-content">
+<ul class="simple">
+<li><p>On appelle détermination de rang k de la <em>puissance</em> <span class="math notranslate nohighlight">\(\frac{1}{n}\)</span> l’application <span class="math notranslate nohighlight">\( z\in C\backslash D_\alpha \mapsto |z|^{1/n} e^{\frac{i}{n}arg_{k,\alpha}(z)}\)</span>. Par composition, cela permet de définir des fonctions puissances rationnelles, puis par continuité de l’exponetielle de définir des fonctions puissances réelles.</p></li>
+<li><p>On appelle détermination de rang k du <em>logarithme</em> l’application <span class="math notranslate nohighlight">\(\log_{k,\alpha} z\in C\backslash D_\alpha \mapsto \ln(|z|) +i arg_{k,\alpha}(z)\)</span>.</p></li>
+<li><p>On appelle détermination de rang k de la fonction <em>puissance</em> complexe l’application <span class="math notranslate nohighlight">\( z\in C\backslash D_\alpha \mapsto e^{\beta arg_{k,\alpha}(z)}\)</span> pour <span class="math notranslate nohighlight">\(\beta \in \C\)</span>.</p></li>
+</ul>
+</section>
+</div></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ch1sec1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1.1. </span>Analyse dans le plan complexe</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ch1sec3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.3. </span>Fonctions holomorphes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-algebriques">1.2.1. Applications algébriques</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series-entieres">1.2.2. Séries entières</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exponentielle-complexe-et-fonction-trigonometrique">1.2.3. Exponentielle complexe et fonction trigonométrique</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determination-de-l-argument-fonctions-associe-et-fonctions-multiformes">1.2.4. Détermination de l’argument, fonctions associé et fonctions multiformes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By P. Fraux
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Lien vers la page principale du cours <a href="https://p-fraux.github.io/Cours-Mathematiques/intro.html"> Mathematiques de première année</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

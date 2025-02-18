@@ -1,0 +1,725 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3.3. Formule d’inversion &#8212; Analyse complexe pour ingénieur - Introduction à la transformé de Laplace et à la transformé en Z</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="/Users/parent/opt/anaconda3/lib/python3.9/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/mystyle.css?v=0f3ba4bc" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/.ipynb_checkpoints/mystyle-checkpoint.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="/Users/parent/opt/anaconda3/lib/python3.9/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/js/all.min.js?v=ec35c6c9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "svg": {"fontCache": "global"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch3sec3';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3.4. Exemple d’application" href="ch3sec4.html" />
+    <link rel="prev" title="3.2. Manipuler la transformée de Laplace" href="ch3sec2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/N7solo.png" class="logo__image only-light" alt="Analyse complexe pour ingénieur - Introduction à la transformé de Laplace et à la transformé en Z - Home"/>
+    <img src="_static/N7solo.png" class="logo__image only-dark pst-js-only" alt="Analyse complexe pour ingénieur - Introduction à la transformé de Laplace et à la transformé en Z - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Bienvenue au cours d’analyse complexe pour ingénieur
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch1intro.html">1. <i class="fas fa-book fa-fw"></i> Corps des complexes, fonctions usuelles et holomorphie</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch1sec1.html">1.1. Analyse dans le plan complexe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1sec2.html">1.2. Fonctions complexes usuelles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1sec3.html">1.3. Fonctions holomorphes</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch2intro.html">2. <i class="fas fa-book fa-fw"></i> Intégration dans le corps des complexes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch2sec1.html">2.1. Intégrale curviligne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2sec2.html">2.2. Théorème de Cauchy et conséquences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2sec3.html">2.3. Singularités et Théorème des résidus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2sec4.html">2.4. Les fonctions harmoniques (H.P.)</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="ch3intro.html">3. <i class="fas fa-book fa-fw"></i> Transformée de Laplace</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ch3sec1.html">3.1. Définition, domaine de validité et propriétée fondamentale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3sec2.html">3.2. Manipuler la transformée de Laplace</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.3. Formule d’inversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3sec4.html">3.4. Exemple d’application</a></li>
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch4intro.html">4. <i class="fas fa-book fa-fw"></i> Transformée en Z</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch4sec1.html">4.1. Définition et propriétés</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4sec2.html">4.2. Exemples d’applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4sec3.html">4.3. Lien avec la transformée de Laplace</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch7intro.html">5. <i class="fas fa-book fa-fw"></i>  Annexes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch7sec1.html">5.1. Dérivation sous le signe intégral de fonctions holomorphes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7sec2.html">5.2. Surjectivité de l’exponentielle complexe</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="biblio.html">6. <i class="fa-solid fa-book-open"></i> Bibliographie</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://p-fraux.github.io/Analyse_complexe/intro.html" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://p-fraux.github.io/Analyse_complexe/intro.html/issues/new?title=Issue%20on%20page%20%2Fch3sec3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ch3sec3.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Formule d’inversion</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="formule-d-inversion">
+<h1><span class="section-number">3.3. </span>Formule d’inversion<a class="headerlink" href="#formule-d-inversion" title="Link to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\(\newcommand{\R}{\mathbb{R}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\Q}{\mathbb{Q}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\N}{\mathbb{N}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\C}{\mathbb{C}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\Z}{\mathbb{Z}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\red}{\color{red}}\)</span></p>
+<div class="proof theorem admonition" id="theorem-0">
+<p class="admonition-title"><span class="caption-number">Theorem 3.3 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>Soit <span class="math notranslate nohighlight">\(f\)</span> absolument transformable et <span class="math notranslate nohighlight">\(F\)</span> sa transformée de Laplace.</p>
+<p>Alors pour tout <span class="math notranslate nohighlight">\(x_0&gt;x_{ca}\)</span>, si l’on note <span class="math notranslate nohighlight">\(D^\uparrow(x)\)</span> la droite verticale au-dessus de <span class="math notranslate nohighlight">\(x\)</span>, nous aurons (sous réserve d’intégrabilité) que</p>
+<div class="math notranslate nohighlight">
+\[f(t)Heav(t)=\frac{1}{2i\pi}\int_{D^\uparrow(x_0)}F(z)e^{{\red +}zt}dz = \int_{-\infty}^{+\infty}F(x_0+iy)\frac{e^{(x_0+iy)t}}{2\pi}dy.\]</div>
+<p>(On parle de contour de Bromwich pour désigner une telle droite d’intégration)</p>
+<figure class="align-default" id="id1">
+<img alt="_images/Bromwich.png" src="_images/Bromwich.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Le contour de Bromwich</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="proof admonition" id="proof">
+<p>Proof. Rappelons pour la preuve le résultat fondamental de la théorie de Fourier.</p>
+<p>Si <span class="math notranslate nohighlight">\(x :t \mapsto x(t)\)</span> est une fonction intégrable de transformée de fourrier <span class="math notranslate nohighlight">\(X(\nu)=TF(x)(\nu)=\int_{-\infty}^{+\infty} x(t)e^{-i\nu t}dt\)</span> également intégrable, alors</p>
+<div class="math notranslate nohighlight">
+\[ x(t)= \int_{-\infty}^{+\infty}X(\nu)\frac{e^{i\nu t}}{2\pi}d\nu.\]</div>
+<p>On remarque que</p>
+<div class="math notranslate nohighlight">
+\[F(x_0+iy)=\int_{0}^{+\infty}x(t)e^{-x_0t}e^{-iyt} dt=TF(x(t)Heav(t)e^{x_0t})[y].\]</div>
+<p>On applique alors la théorie de Fourier continue pour obtenir que</p>
+<div class="math notranslate nohighlight">
+\[ f(t)Heav(t) e^{-x_0t}=\int_{-\infty}^{+\infty} F(x_0+iy)\frac{e^{iyt}}{2\pi}dy.\]</div>
+<p>Nous avons retrouvé le terme de droite de la proposition (en multipliant par <span class="math notranslate nohighlight">\(e^{x_0t}\)</span>), et celui du milieu découle directement d’une paramétrisation de la droite <span class="math notranslate nohighlight">\(D^\uparrow(x_0)\)</span>.</p>
+</div>
+<div class="proof remark dropdown admonition" id="remark-1">
+<p class="admonition-title"><span class="caption-number">Remark 3.2 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Il peut sembler étonnant que la formule d’inversion ne dépend pas de la droite considérée du moment qu’elle se situe à droite de l’abscisse de convergence absolue. Mais il s’agit d’une conséquence facile du théorème de Cauchy sur des rectangles de plus en plus allongé verticalement appliqué à la transformée.</p>
+</section>
+</div></section>
+</div><div class="tip admonition">
+<p class="admonition-title">Méthode générale pour inverser la transformée :</p>
+<p>Deux cas présentent dans la plupart des cas.</p>
+<ul class="simple">
+<li><p>Soit on reconnait directement la transformée de Laplace d’une fonction présente dans une table, et dans ce cas il n’y a pas de travail supplémentaire puisque si <span class="math notranslate nohighlight">\(TL(f)=g\)</span>, alors <span class="math notranslate nohighlight">\(TL^{-1}(g)=f\)</span>.</p></li>
+<li><p>Sinon, on commence par déterminer l’abscisse de convergence, puis on choisit une suite de contour dont un morceau converge vers le contour de Bromwich, les autres étant soit facile à calculer, soit ayant une convergence vers 0 facile à démontrer (par exemple avec les lemmes de Jordan).</p></li>
+</ul>
+<p>Dans des exercices de première année l’on vous donnera les contours à considerer.</p>
+</div>
+<div class="exercise admonition" id="exer_transformation_racine">
+
+<p class="admonition-title"><span class="caption-number">Exercise 3.3 </span></p>
+<section id="exercise-content">
+<p>Chercher l’inverse de la transformée de Laplace de la fonction <span class="math notranslate nohighlight">\(p\mapsto \frac{1}{\sqrt{p}}\)</span> (avec la détermination principale de droite de coupure <span class="math notranslate nohighlight">\(\R_-\)</span>). On utilisera le contour ci-dessous et l’on admettra que l’intégrale sur les morceaux <span class="math notranslate nohighlight">\(A-B\)</span> et <span class="math notranslate nohighlight">\(C-D\)</span> converge vers 0.</p>
+<a class="reference internal image-reference" href="_images/domaine_racine.png"><img alt="fig:domaine_racine" class="align-center" src="_images/domaine_racine.png" style="width: 300px;" /></a>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>On souhaite calculer <span class="math notranslate nohighlight">\(\lim\limits_{R\to +\infty} \int_{\gamma_1} \frac{e^{pt}}{\sqrt{p}}dp\)</span> pour <span class="math notranslate nohighlight">\(t&gt;0\)</span>. Pour cela, nous allons utiliser le théorème des résidus (ou celui de Cauchy vu qu’il n’y a pas de résidus).</p>
+<p>Remarquons d’abord que pour <span class="math notranslate nohighlight">\(p\)</span> dans l’image de <span class="math notranslate nohighlight">\(\gamma_2\)</span> ou de <span class="math notranslate nohighlight">\(\gamma_6\)</span>, <span class="math notranslate nohighlight">\(|\frac{1}{\sqrt{p}}|=\frac{1}{\sqrt{R}}\)</span>. Comme cette majoration est uniforme et tend vers 0, que <span class="math notranslate nohighlight">\(t&gt;0\)</span> et que nous intégrons sur des parties de <span class="math notranslate nohighlight">\(C_R^g\)</span>, nous avons d’après le deuxième lemme de Jordan que</p>
+<div class="math notranslate nohighlight">
+\[\lim\limits_{R\to +\infty} \int_{\gamma_2}\frac{e^{pt}}{\sqrt{p}}dp+\int_{\gamma_6}\frac{e^{pt}}{\sqrt{p}}dp =0.\]</div>
+<p>De plus, pour <span class="math notranslate nohighlight">\(p\)</span> dans l’image de <span class="math notranslate nohighlight">\(\gamma_4\)</span>, nous avons <span class="math notranslate nohighlight">\(|p\frac{e^{pt}}{\sqrt{p}}|\leq \sqrt{\epsilon} e^{\epsilon t}\)</span>. Comme cette majoration est uniforme et tend vers 0, nous avons d’après le premier lemme de Jordan que</p>
+<div class="math notranslate nohighlight">
+\[\lim\limits_{\epsilon\to 0} \int_{\gamma_4}\frac{e^{pt}}{\sqrt{p}}dp=0.\]</div>
+<p>Enfin, calculons directement :</p>
+<div class="math notranslate nohighlight">
+\[\int_{\gamma_3} \frac{e^{pt}}{\sqrt{p}}dp =\int_{-\sqrt{R^2-\epsilon^2}}^0 \frac{e^{(u+i\epsilon)t}}{i\sqrt{u+i\epsilon}} du\]</div>
+<div class="math notranslate nohighlight">
+\[\underset{\R\to \infty,\epsilon \to 0}{\to} -i\int_0^{+\infty} \frac{e^{-tw}}{\sqrt{w}}dw= -i\frac{2}{\sqrt{t}}\int _0^{+\infty} e^{-x^2}dx\]</div>
+<div class="math notranslate nohighlight">
+\[=\frac{-i\sqrt{\pi}}{\sqrt{t}}\]</div>
+<p>De la même manière, on montre que</p>
+<div class="math notranslate nohighlight">
+\[\int_{\gamma_5} \frac{e^{pt}}{\sqrt{p}}dp =\int_0^{-\sqrt{R^2-\epsilon^2}} \frac{e^{(u-i\epsilon)t}}{{\red{-}}i\sqrt{u-i\epsilon}} du\]</div>
+<div class="math notranslate nohighlight">
+\[\underset{\R\to \infty,\epsilon \to 0}{\to} \frac{-i\sqrt{\pi}}{\sqrt{t}}\]</div>
+<p>Le théorème des résidus nous affirme que</p>
+<div class="math notranslate nohighlight">
+\[\int_{\gamma_1\cup A-B \cup \gamma_2\cup...\cup C-D}\frac{e^{pt}}{\sqrt{p}}dp = 2i\pi \sum_{z_j \in Dom} Res(\frac{e^{pt}}{\sqrt{p}},z_j) =0.\]</div>
+<p>Donc en passant à la limite en <span class="math notranslate nohighlight">\(R\)</span> et en <span class="math notranslate nohighlight">\(\epsilon\)</span>, on trouve finalement que
+<span class="math notranslate nohighlight">\(\int_{\gamma_1}\frac{e^{pt}}{\sqrt{p}}dp \to \frac{2i\sqrt{\pi}}{\sqrt{t}}\)</span>.</p>
+<p>Finalement,</p>
+<div class="math notranslate nohighlight">
+\[f(t) = \frac{1}{2i\pi} \int_{D^\uparrow}\frac{e^{pt}}{\sqrt{p}}dp = \frac{1}{\sqrt{\pi t}}.\]</div>
+</div>
+</section>
+</div>
+<div class="exercise admonition" id="exer_transformation_gen">
+
+<p class="admonition-title"><span class="caption-number">Exercise 3.4 </span></p>
+<section id="exercise-content">
+<p>Déterminer la transformée de Laplace inverse de la fonction $<span class="math notranslate nohighlight">\( F : p \mapsto \frac{1}{(p^2+1)^2}\)</span>$ à l’aide du contour de Bromwich.</p>
+<a class="reference internal image-reference" href="_images/domaine_gen.png"><img alt="fig:domaine_gen" class="align-center" src="_images/domaine_gen.png" style="width: 300px;" /></a>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>La fonction <span class="math notranslate nohighlight">\(F\)</span> a pour singularités isolées les points  <span class="math notranslate nohighlight">\(±i\)</span>. En particulier, son abscisse de convergence est <span class="math notranslate nohighlight">\(0\)</span>.Le contour est bien pertinent</p>
+<p>Remarquons d’abord que pour <span class="math notranslate nohighlight">\(|z|=R\)</span>,
+<span class="math notranslate nohighlight">\(|F(z)|\leq \frac{1}{(R^2-1)^2}\)</span>. Comme cette majoration est uniforme et tend vers 0, nous avons par le second lemme de Jordan (on intègre sur <span class="math notranslate nohighlight">\(C_R^g\)</span> et <span class="math notranslate nohighlight">\(t&gt;0\)</span>) que</p>
+<div class="math notranslate nohighlight">
+\[\int_{\gamma_3}F(p)e^{tp}dp \to 0.\]</div>
+<p>Maintenant, il est immédiat que</p>
+<div class="math notranslate nohighlight">
+\[\int_{\gamma_{2}}F(p)e^{tp}dp=\int_1^0\frac{e^{itR+tu}}{((R+iu)^2+1)^2} du \to 0\]</div>
+<p>et</p>
+<div class="math notranslate nohighlight">
+\[ \int_{\gamma_{4}}F(p)e^{tp}dp=\int_0^1\frac{e^{itR+tu}}{((R+iu)^2+1)^2} du \to 0\]</div>
+<p>Calculons les résidus de <span class="math notranslate nohighlight">\(F\)</span>. Comme il s’agit de pôles d’ordre 2,</p>
+<div class="math notranslate nohighlight">
+\[Res(F(p)e^{tp},i)=\frac{d}{dp}\left[(p-i)^2F(p)e^{tp}\right]_{|p=i} =\frac{d}{dp}\left[\frac{e^{tp}}{(p+i)^2}\right]_{|p=i} =\frac{(2i)^2te^{it}-2(2i)e^{it}}{(2i)^3} =\frac{1-it}{2}e^{it}\]</div>
+<div class="math notranslate nohighlight">
+\[Res(F(p)e^{tp},-i)=\frac{d}{dp}\left[\frac{e^{tp}}{(p-i)^2}\right]_{|p=-i} =\frac{(-2i)^2te^{-it}-2(-2i)e^{-it}}{(-2i)^3} =\frac{1+it}{2}e^{-it}\]</div>
+<p>Le théorème des résidus nous donne alors que</p>
+<div class="math notranslate nohighlight">
+\[\int_{\gamma_1\cup\gamma_2\cup\gamma_3\cup\gamma_4}F(p)e^{pt}dp=2i\pi\left(Res(F(p)e^{tp},i)\!\phantom{\int}\!+\phantom{\int}\!Res(F(p)e^{tp},-i)\right)=2i\pi\left(\cos(t)\!\phantom{\int}\!+\phantom{\int}\!t\sin(t)\right).\]</div>
+<p>Finalement, en passant à la limite en <span class="math notranslate nohighlight">\(R\to +\infty\)</span>, on trouve que</p>
+<div class="math notranslate nohighlight">
+\[f(t)=\frac{1}{2i\pi}\int_{D^\uparrow}F(p)e^{pt} = \cos(t)+t\sin(t)\]</div>
+</div>
+</section>
+</div>
+<div class="exercise admonition" id="exer_transformation_tanh">
+
+<p class="admonition-title"><span class="caption-number">Exercise 3.5 </span></p>
+<section id="exercise-content">
+<p>On considère la fonction “ dent de scie” défini par</p>
+<div class="math notranslate nohighlight">
+\[\forall t\in \R, f(t)=f(t+1),\]</div>
+<div class="math notranslate nohighlight">
+\[\forall t\in[0,1], f(t)=\frac{1}{2}-t.\]</div>
+<p>Montrer que sa transformée de Laplace est</p>
+<div class="math notranslate nohighlight">
+\[TL(f)[p]=-\frac{1}{p^2}+\frac{1}{2p}\frac{1+e^{-p}}{1-e^{-p}}.\]</div>
+<p>Inversement, calculer par la formule d’inversion une autre expression de <span class="math notranslate nohighlight">\(f\)</span>. à l’aide du contours suivant pour <span class="math notranslate nohighlight">\(R\in 2\pi\N+\pi\)</span></p>
+<a class="reference internal image-reference" href="_images/domaine_gen.png"><img alt="fig:domaine_gen" class="align-center" src="_images/domaine_gen.png" style="width: 300px;" /></a>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>Directement par le calcul, pour <span class="math notranslate nohighlight">\(Re(p)&gt;0\)</span></p>
+<div class="math notranslate nohighlight">
+\[TL(f)[p]&amp;=\int_0^{+\infty}f(t)e^{-pt}dt=\sum_{n=0}^{+\infty} \int_{n}^{n+1}f(t)e^{-pt}dt\]</div>
+<p>En découpant sur des intérvalles de la taille de la période de <span class="math notranslate nohighlight">\(f\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[TL(f)[p]=\sum_{n=0}^{+\infty} \int_{0}^{1}f(t+n)e^{-p(t+n)}dt\]</div>
+<p>On translate pour utiliser la périodicité et l’expression de <span class="math notranslate nohighlight">\(f\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[TL(f)[p]=\sum_{n=0}^{+\infty} e^{-pn}\int_{0}^{1}f(t)e^{-pt}dt=\sum_{n=0}^{+\infty} e^{-pn}\int_{0}^{1}\left(\frac{1}{2}-t\right)e^{-pt}dt\]</div>
+<div class="math notranslate nohighlight">
+\[=\sum_{n=0}^{+\infty} e^{-pn}\left[\frac{e^{-pt}}{-2p}+(\frac{te^{-pt}}{p}+\frac{e^{-pt}}{p^2})\right]_0^1=\sum_{n=0}^{+\infty} e^{-pn}\left(\frac{e^{-p}}{-2p}+(\frac{e^{-p}}{p}+\frac{e^{-p}}{p^2})+\frac{1}{2p}-\frac{1}{p^2}\right),\]</div>
+<div class="math notranslate nohighlight">
+\[=\sum_{n=0}^{+\infty} e^{-pn}\left(\frac{e^{-p}+1}{2p}+\frac{e^{-p}-1}{p^2}\right)=\frac{e^{-p}+1}{2p(1-e^{-p})} - \frac{1}{p^2}\]</div>
+<p>(La première somme étant géométrique, et la deuxième téléscopique.)</p>
+<p>Réciproquement, on pose</p>
+<div class="math notranslate nohighlight">
+\[F: p \mapsto -\frac{1}{p^2}+\frac{1}{2p}\frac{1+e^{-p}}{1-e^{-p}}\]</div>
+<p>Remarquons tout d’abord que les singularités sont <span class="math notranslate nohighlight">\(\{0\}\cup 2i\pi\Z\)</span> (puisque les zéros de <span class="math notranslate nohighlight">\(1-e^{-p}\)</span> sont exactement <span class="math notranslate nohighlight">\(2i\pi \Z\)</span>. En particulier, son abscisse de convergence est <span class="math notranslate nohighlight">\(0=\sup\left(Re(p.s.i.)\right)\)</span>. On se donne alors <span class="math notranslate nohighlight">\(D^{\uparrow}\)</span> la droite verticale d’abscisse <span class="math notranslate nohighlight">\(1\)</span> (par exemple) et <span class="math notranslate nohighlight">\(t&gt;0\)</span>, et l’on cherche à calculer</p>
+<div class="math notranslate nohighlight">
+\[\int_{D^{\uparrow}} F(p)e^{pt}.\]</div>
+<p>On utilise alors le contour donnée.</p>
+<p>Remarquons que sur <span class="math notranslate nohighlight">\(\gamma_3\)</span>, <span class="math notranslate nohighlight">\(|F(p)|=|-\frac{1}{p^2}+\frac{1+e^p}{p(1-e^{p}}|\leq\frac{1}{R^2}+\frac{2}{R|1-e^{p}|}\)</span>. Il nous faut alors pour appliquer le lemme de Jordan minorer uniformément <span class="math notranslate nohighlight">\(|1-e^{-p}|\)</span>. Une inégalité triangulaire ne suffit clairement pas, car minorant par 0 sur l’axe imaginaire.</p>
+<p><em>Écrivons alors <span class="math notranslate nohighlight">\(p=(2k+1)\pi e^{i\theta}\)</span>, et soyons plus précis dans les calculs</em></p>
+<div class="math notranslate nohighlight">
+\[|1-e^{p}|^2=|1-e^{(2k+1)\pi \cos(\theta)+i\sin(\theta)}|^2\]</div>
+<div class="math notranslate nohighlight">
+\[=|1-e^{(2k+1)\pi \cos(\theta)}\cos((2k+1)\pi\sin(\theta)) +i e^{(2k+1)\pi \cos(\theta)}\sin(-(2k+1)\pi\sin(\theta))|^2\]</div>
+<div class="math notranslate nohighlight">
+\[=\left(1-e^{(2k+1)\pi \cos(\theta)}\cos((2k+1)\pi\sin(\theta))\right)^2+\left(e^{(2k+1)\pi \cos(\theta)}\sin((2k+1)\pi\sin(\theta))\right)^2\]</div>
+<div class="math notranslate nohighlight">
+\[\geq \left(1-e^{(2k+1)\pi \cos(\theta)}\cos((2k+1)\pi\sin(\theta))\right)^2\]</div>
+<p><em>On se rend alors compte que dans l’expression exacte, nous avons deux termes en compétition : l’exponentielle qui peut devenir très proche de 1, et le terme en <span class="math notranslate nohighlight">\(\cos\left((2k+1)\pi\sin(\theta)\right)\)</span> qui peut devenir négatif. L’idée est de faire une disjonction de cas suivant l’importance de <span class="math notranslate nohighlight">\(\cos(\theta)\)</span>.</em></p>
+<p><em>On se donne <span class="math notranslate nohighlight">\(\delta_k\)</span> que l’on se fixera plus tard, et l’on fait deux cas en utilisant que dans le domaine considéré les angles ont des cosinus négatifs.</em></p>
+<p><em><strong>Cas 1 :</strong> <span class="math notranslate nohighlight">\(\cos(\theta)\leq -\delta_k\)</span>.</em></p>
+<p><em>Ce cas est le plus simple, car il suffit de retomber sur l’inégalité trangulaire :</em></p>
+<div class="math notranslate nohighlight">
+\[|1-e^{p}|\geq 1-|e^{p}|= 1-e^{(2k+1)\pi \cos(\theta}\geq 1-e^{-(2k+1)\delta_k}\]</div>
+<p>Ceci nous donne une première condition sur <span class="math notranslate nohighlight">\(\delta_k\)</span>. Il faudra le choisir de telle manière que <span class="math notranslate nohighlight">\((2k+1)\delta_k&gt;c&gt;0\)</span>.</p>
+<p><em><strong>Cas 2 :</strong> <span class="math notranslate nohighlight">\(\cos(\theta)^2\leq \delta_k^2\)</span>.</em></p>
+<p><em>On veut alors donner une condition sur <span class="math notranslate nohighlight">\(\delta_k\)</span> qui assure que <span class="math notranslate nohighlight">\(\cos\left((2k+1)\pi\sin(\theta)\right)\)</span> soit négatif.</em></p>
+<p><em>Nous avons pour cela que <span class="math notranslate nohighlight">\(1\geq \sin(\theta)^2\geq 1-\delta_k^2\)</span>, et donc que</em></p>
+<div class="math notranslate nohighlight">
+\[ (2k+1)\pi\geq (2k+1)\pi |\sin(\theta)|\geq (2k+1)\pi\sqrt{1-\delta_k^2}\]</div>
+<p><em>On choisit alors <span class="math notranslate nohighlight">\(\delta_k\)</span> de telle manière que <span class="math notranslate nohighlight">\((2k+1)\pi\sqrt{1-\delta^2}\geq (2k+\frac{1}{2})\pi\)</span>, par exemple <span class="math notranslate nohighlight">\(\delta_k^2=1-(\frac{4k+1}{4k+2})^2\)</span>, qui vérifie également que <span class="math notranslate nohighlight">\(\left((2k+1)\delta_k\right)^2=(2k+1)^2-(2k+\frac{1}{2})^2=2k+\frac{3}{4}\)</span>.</em></p>
+<p><em>Dans ce cas, par décroissance de <span class="math notranslate nohighlight">\(\cos\)</span> sur <span class="math notranslate nohighlight">\([(2k+\frac{1}{2})\pi;(2k+1)\pi]\)</span>, on trouve bien que</em></p>
+<div class="math notranslate nohighlight">
+\[\cos\left((2k+1)\pi\sin(\theta)\right)\leq \cos((2k+\frac{1}{2})\pi)=0.\]</div>
+<p><em>Ceci nous assure finalement que</em></p>
+<div class="math notranslate nohighlight">
+\[|1-e^{p}|^2\geq \left(1-e^{(2k+1)\pi \cos(\theta)}\cos((2k+1)\pi\sin(\theta))\right)^2\geq 1\]</div>
+<p><em>Comme dans les deux cas, <span class="math notranslate nohighlight">\(|1-e^{p}|\)</span> est minoré, nous avons bien que <span class="math notranslate nohighlight">\(\sup\limits_{\gamma_3}|F(p)|\to 0\)</span>.</em></p>
+<p>Munie de cette majoration, nous pouvons utiliser le deuxième lemme de Jordan pour conclure que</p>
+<div class="math notranslate nohighlight">
+\[\int_{\gamma_3} F(p)e^{pt}dp \to 0.\]</div>
+<p>En fait, un raisonnement similaire permet de conclure que</p>
+<div class="math notranslate nohighlight">
+\[\int_{\gamma_2} F(p)e^{pt}dp \to 0 ,\]</div>
+<div class="math notranslate nohighlight">
+\[\int_{\gamma_4} F(p)e^{pt}dp \to 0 .\]</div>
+<p>Calculons à présent les résidus. Seul le deuxième terme de la somme est pertinent, <span class="math notranslate nohighlight">\(p\mapsto\frac{1}{p^2}\)</span> n’ayant aucun résidu. Remarquons pour le calcul que les singularités en <span class="math notranslate nohighlight">\(2i\pi \Z\backslash\{0\}\)</span> sont des pôles simples pour obtenir
+$<span class="math notranslate nohighlight">\(Res(F(p)e^{pt},2i\pi k)=\frac{1+e^{-2i\pi k}}{2(2i\pi k) (-e^{-2i\pi k})} e^{2i\pi k t}=-\frac{e^{2i\pi k t}}{2i\pi k }.\)</span><span class="math notranslate nohighlight">\(
+Pour le résidu en 0, on fait un développement asymptotique :
+\)</span><span class="math notranslate nohighlight">\(\frac{1}{2p}\frac{1+e^{-p}}{1-e^{-p}}=\frac{1}{2p}(2-p+o(p))\frac{1}{p-\frac{p^2}{2}+o(p^2)} = \frac{1}{2p^2}(2-p+o(p))(1-\frac{p}{2}+o(p))=\frac{1}{p^2}-\frac{1}{p} +o(\frac{1}{p}).\)</span><span class="math notranslate nohighlight">\(
+On en déduit donc que \)</span><span class="math notranslate nohighlight">\(Res(F(p)e^{pt},0)=1.\)</span><span class="math notranslate nohighlight">\(
+Finalement, grâce au théorème des résidus, on sait que 
+\)</span><span class="math notranslate nohighlight">\(\frac{1}{2i\pi}\int_{D^\uparrow}F(p)e^{pt}dp=\lim_{k\to +\infty}1+\sum_{\underset{k\neq 0}{k=-n}}^nRes(F(p)e^{pt},2i\pi k).\)</span><span class="math notranslate nohighlight">\(
+Ce qui nous donne l'expression
+\)</span><span class="math notranslate nohighlight">\(f(t)=1-\sum_{k=1}^{+\infty}\frac{1}{\pi k}\frac{e^{2i\pi k t}-e^{-2i\pi k t}}{2i}=1-\sum_{k=1}^{+\infty}\frac{\sin(2\pi k t)}{\pi k}.\)</span>$
+\underline{Remarque :} On reconnait là une série de Fourier.</p>
+</div>
+</section>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ch3sec2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span>Manipuler la transformée de Laplace</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ch3sec4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.4. </span>Exemple d’application</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By P. Fraux
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Lien vers la page principale du cours <a href="https://p-fraux.github.io/Cours-Mathematiques/intro.html"> Mathematiques de première année</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
